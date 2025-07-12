@@ -1,0 +1,70 @@
+flutter_native_splash:
+  # Customize the parameters below, and run the following command in the terminal:
+  # dart run flutter_native_splash:create --path=splash.yaml
+  # To restore Flutter's default white splash screen, run the following command in the terminal:
+  # dart run flutter_native_splash:remove
+
+
+  # GLOBAL Style ----------------------------------------------
+  color: "#ffffff"
+  color_dark: "#272727"
+
+  image: assets/logos/genz-store-splash-screen-logo-circle.png
+  image_dark: assets/logos/genz-store-splash-screen-logo-circle.png
+
+  #image: assets/splash.png
+  #image_dark: assets/splash-invert.png
+
+  #branding: assets/dart.png
+  #branding_dark: assets/dart_dark.png
+  #branding_mode: bottom  (Also can be bottomLeft)
+  #branding_bottom_padding: 24  (The default value is 0)
+
+
+  # Android 12+  ----------------------------------------------
+  android_12:
+    color: "#ffffff"
+    color_dark: "#272727"
+
+    image: assets/logos/genz-store-splash-screen-logo-circle.png
+    image_dark: assets/logos/genz-store-splash-screen-logo-circle.png
+
+    #icon_background_color: "#111111"
+    #icon_background_color_dark: "#eeeeee"
+
+    #branding: assets/dart.png
+
+
+  # Disable generating a splash screen  ----------------------------------------------
+  #android: false
+  #ios: false
+  web: false
+
+
+  # Platform specific style ----------------------------------------------
+  #color_android: "#42a5f5"
+  #color_dark_android: "#042a49"
+  #color_ios: "#42a5f5"
+  #color_dark_ios: "#042a49"
+  #color_web: "#42a5f5"
+  #color_dark_web: "#042a49"
+  #image_android: assets/logos/genz-store-splash-screen-logo-circle.png
+  #image_dark_android: assets/logos/genz-store-splash-screen-logo-circle.png
+  #image_ios: assets/logos/genz-store-splash-screen-logo-circle.png
+  #image_dark_ios: aassets/logos/genz-store-splash-screen-logo-circle.png
+  #image_web: assets/splash-web.gif
+  #image_dark_web: assets/splash-invert-web.gif
+  #background_image_android: "assets/background-android.png"
+  #background_image_dark_android: "assets/dark-background-android.png"
+  #background_image_ios: "assets/background-ios.png"
+  #background_image_dark_ios: "assets/dark-background-ios.png"
+  #background_image_web: "assets/background-web.png"
+  #background_image_dark_web: "assets/dark-background-web.png"
+  #branding_android: assets/brand-android.png
+  #branding_bottom_padding_android: 24
+  #branding_dark_android: assets/dart_dark-android.png
+  #branding_ios: assets/brand-ios.png
+  #branding_bottom_padding_ios: 24
+  #branding_dark_ios: assets/dart_dark-ios.png
+  #branding_web: assets/brand-web.gif
+  #branding_dark_web: assets/dart_dark-web.gif

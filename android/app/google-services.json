@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "804302570735",
+    "project_id": "softylasa-genz-store",
+    "storage_bucket": "softylasa-genz-store.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804302570735:android:217beac878ca08d70f871a",
+        "android_client_info": {
+          "package_name": "com.softylasa.genz_store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804302570735-ffkp8f81gqlk3tmfphe5773tto9ffp0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.softylasa.genz_store",
+            "certificate_hash": "c6e9be6f6cfab2a5b44a73edeba51d2807386732"
+          }
+        },
+        {
+          "client_id": "804302570735-665844ku1n5aa2cssjme4n67sge9gske.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBXF-rnZfmAfZSUPsvDcwADpdMH8ASLoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804302570735-665844ku1n5aa2cssjme4n67sge9gske.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "804302570735-g0jga087s916mpmht47tkhiqrbor636p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.genzStore"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

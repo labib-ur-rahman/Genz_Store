@@ -1,0 +1,24 @@
+/// -- This class contains all the App Images in String formats
+class SLImages {
+  /// -- App Logo
+  static const String darkAppLogo =
+      'assets/logos/genz-store-splash-screen-logo-circle.png';
+  static const String lightAppLogo =
+      'assets/logos/genz-store-splash-screen-logo-circle.png';
+  static const String circleAppLogo =
+      'assets/logos/genz-store-splash-screen-logo-circle.png';
+  static const String squareAppLogo =
+      'assets/logos/genz-store-splash-screen-logo-square.png';
+
+  /// -- Social Logos
+  static const String google = 'assets/logos/google-icon.png';
+  static const String facebook = 'assets/logos/facebook-icon.png';
+
+  /// -- onBoarding Images
+  static const String onBoardingAnimations1 =
+      "assets/animations/on_boarding_animations/lottie-online-shopping-mobile-shopping.json";
+  static const String onBoardingAnimations2 =
+      "assets/animations/on_boarding_animations/lottie-shopping-cart.json";
+  static const String onBoardingAnimations3 =
+      "assets/animations/on_boarding_animations/lottie-delivery-service.json";
+}
