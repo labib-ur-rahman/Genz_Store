@@ -11,8 +11,8 @@ class SLImages {
       'assets/logos/genz-store-splash-screen-logo-square.png';
 
   /// -- Social Logos
-  static const String google = 'assets/logos/google-icon.png';
-  static const String facebook = 'assets/logos/facebook-icon.png';
+  static const String google = 'assets/logos/google-circle-logo.png';
+  static const String facebook = 'assets/logos/facebook-circle-logo.png';
 
   /// -- onBoarding Images
   static const String onBoardingAnimations1 =
