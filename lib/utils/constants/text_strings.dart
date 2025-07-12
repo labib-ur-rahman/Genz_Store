@@ -1,6 +1,8 @@
 /// -- This class contains all the App Text in String formats.
 class SLTexts {
   /// -- GLOBAL Texts
+  static const String labibUrRahman = 'Labib UR Rahman';
+  static const String labib = 'Labib';
 
   /// -- App Name
   static const String appName = 'GenZ Store';
