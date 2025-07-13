@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:genz_store/features/authentication/screens/signup/signup.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SLLoginForm extends StatelessWidget {
@@ -46,7 +48,7 @@ class SLLoginForm extends StatelessWidget {
                 /// Remember Me
                 Row(
                   children: [
-                    Checkbox(value: true, onChanged: (value) {}),
+                    SizedBox(width: 24, height: 24, child: Checkbox(value: true, onChanged: (value) {})),
                     const Text(SLTexts.rememberMe),
                   ],
                 ),
@@ -76,7 +78,7 @@ class SLLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: () {},
+                onPressed: ()  => Get.to(() => const SignupScreen()),
                 child: const Text(SLTexts.createAccount),
               ),
             ),
