@@ -64,7 +64,7 @@ flutter:
     - assets/logos/
     - assets/icons/brands/
     - assets/animations/on_boarding_animations/
-
+    - assets/animations/lottie_global/
 
   #---------------------- LOCAL FONTS ----------------------#
   fonts:

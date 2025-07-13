@@ -3,6 +3,7 @@ class SLTexts {
   /// -- GLOBAL Texts
   static const String labibUrRahman = 'Labib UR Rahman';
   static const String labib = 'Labib';
+  static const String emailAuthor = 'contact.labibur@gmail.com';
 
   /// -- App Name
   static const String appName = 'GenZ Store';
@@ -49,6 +50,9 @@ class SLTexts {
   static const String resendEmail = "Resend Email";
   static const String resendEmailIn = "Resend Email in";
   static const String getStarted = 'Get Started';
+  static const String slContinue = 'Continue';
+  static const String slSubmit = 'Submit';
+  static const String slDone = 'Done';
 
   /// -- Authentication Heading Text
   static const String loginTitle = 'Welcome Back';

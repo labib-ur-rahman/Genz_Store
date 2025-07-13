@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:genz_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:genz_store/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SLSignupForm extends StatelessWidget {
@@ -89,7 +91,7 @@ class SLSignupForm extends StatelessWidget {
 
           const SizedBox(height: SLSizes.spaceBtwInputFields),
 
-          /// -- Terms & Conditions Checkbox
+          /// -- Terms & Conditions Checkbox -----------------------------------
           SLTernsCondition(),
 
           const SizedBox(height: SLSizes.spaceBtwSections),
@@ -98,7 +100,7 @@ class SLSignupForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => Get.to(() => const VerifyEmailScreen()),
               child: const Text(SLTexts.createAccount),
             ),
           ),

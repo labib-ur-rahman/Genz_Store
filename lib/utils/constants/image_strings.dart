@@ -21,4 +21,8 @@ class SLImages {
       "assets/animations/on_boarding_animations/lottie-shopping-cart.json";
   static const String onBoardingAnimations3 =
       "assets/animations/on_boarding_animations/lottie-delivery-service.json";
+
+  /// -- Auth Images
+  static const String emailVerification = "assets/animations/lottie_global/lottie-email-verification.json";
+  static const String successfulCheck = "assets/animations/lottie_global/lottie-successful.json";
 }
