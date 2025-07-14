@@ -5,7 +5,6 @@ import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';
 import 'package:genz_store/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
 
 class ResetPassword extends StatelessWidget {

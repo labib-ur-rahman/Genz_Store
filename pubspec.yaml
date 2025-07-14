@@ -63,6 +63,8 @@ flutter:
   assets:
     - assets/logos/
     - assets/icons/brands/
+    - assets/icons/categories/
+    - assets/icons/category/
     - assets/animations/on_boarding_animations/
     - assets/animations/lottie_global/
 

@@ -26,6 +26,10 @@ class SLTexts {
   /// -- Home
   static const String homeAppbarTitle = 'Good day for shopping';
   static const String homeAppbarSubTitle = 'Labib UR Rahman';
+  static const String searchHintText = 'Search in Store';
+
+  /// -- Heading
+  static const String popularCategories = 'Popular Categories';
 
   /// -- Authentication Form Text
   static const String firstName = "First Name";

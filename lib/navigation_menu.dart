@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:genz_store/features/shop/screens/home/home.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-
-import 'features/shop/screens/home/home.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -31,7 +30,13 @@ class NavigationMenu extends StatelessWidget {
             ],
           ),
         ),
-        body: Obx(() => controller.screens [controller.selectedIndex.value]),
+        body: Obx(() {
+          final index = controller.selectedIndex.value;
+          if (index < 0 || index >= controller.screens.length) {
+            return const Center(child: Text('Invalid screen index'));
+          }
+          return controller.screens[index];
+        }),
     );
   }
 }
@@ -39,5 +44,12 @@ class NavigationMenu extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
-  final screens = [const HomeScreen(), Container(color: Colors.green), Container(color: Colors.blue), Container(color: Colors.yellow,)];
+  //final screens = [const HomeScreen(), Container(color: Colors.green), Container(color: Colors.blue), Container(color: Colors.yellow,)];
+
+  final List<Widget> screens = [
+    const HomeScreen(),
+    Container(color: Colors.green),
+    Container(color: Colors.blue),
+    Container(color: Colors.yellow),
+  ];
 }
