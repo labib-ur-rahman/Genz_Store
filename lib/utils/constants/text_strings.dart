@@ -30,6 +30,7 @@ class SLTexts {
 
   /// -- Heading
   static const String popularCategories = 'Popular Categories';
+  static const String popularProducts = 'Popular Products';
 
   /// -- Authentication Form Text
   static const String firstName = "First Name";

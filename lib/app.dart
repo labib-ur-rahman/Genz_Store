@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genz_store/features/authentication/screens/OnBoarding/onboarding.dart';
+import 'package:genz_store/features/authentication/screens/onBoarding/onboarding.dart';
 import 'package:get/get.dart';
 import 'package:genz_store/utils/theme/theme.dart';
 

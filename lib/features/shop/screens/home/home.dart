@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:genz_store/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:genz_store/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:genz_store/common/widgets/layouts/grid_layout.dart';
+import 'package:genz_store/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:genz_store/common/widgets/texts/section_heading.dart';
 import 'package:genz_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:genz_store/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:genz_store/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:genz_store/utils/constants/colors.dart';
+import 'package:genz_store/utils/constants/image_strings.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';
 import 'package:iconsax/iconsax.dart';
@@ -52,12 +56,44 @@ class HomeScreen extends StatelessWidget {
 
                         const SizedBox(height: SLSizes.spaceBtwItems),
 
+                        /// -- Category List -----------------------------------
                         SLHomeCategories(),
                       ],
                     ),
                   ),
                 ],
               ),
+            ),
+
+            /// -- Body --------------------------------------------------------
+            Padding(
+              padding: const EdgeInsets.all(SLSizes.defaultSpace),
+              child: Column(
+                children: [
+                  /// -- Promo Slider ------------------------------------------
+                  SLPromoSlider(
+                    banners: [
+                      SLImages.squareAppLogo,
+                      SLImages.squareAppLogo,
+                      SLImages.squareAppLogo,
+                    ],
+                  ),
+
+                  const SizedBox(height: SLSizes.spaceBtwSections),
+
+                  /// -- Heading Popular Categories ----------------------
+                  SLSectionHeading(
+                    title: SLTexts.popularProducts,
+                    showActionButton: true,
+                    textColor: SLColors.black,
+                  ),
+
+                  const SizedBox(height: SLSizes.spaceBtwItems),
+
+                  /// -- Popular Products --------------------------------------
+                  SLGridLayout(itemCount: 10, itemBuilder: (_, index) => const SLProductCardVertical(),)
+                ]
+              )
             ),
           ],
         ),

@@ -32,8 +32,8 @@ class SLSearchContainer extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Icon(icon, color: SLColors.darkerGrey,),
-              const SizedBox(width: SLSizes.spaceBtwItems),
+              if (icon != null) Icon(icon, color: SLColors.darkerGrey),
+              if (icon != null) const SizedBox(width: SLSizes.spaceBtwItems),
               Text(text, style: Theme.of(context).textTheme.bodySmall),
             ],
           ),

@@ -22,4 +22,14 @@ class SLImages {
   /// -- Categories
   static const String icDiamond = "assets/icons/categories/sl-sparkling-diamond.png";
   static const String slDiamondIcon = "assets/icons/category/sl-sparkling-diamond-64.png";
+
+  /// -- Banners
+  static const String promoBanner1 = "assets/images/banners/sl-promo-banner-1.png";
+  static const String promoBanner2 = "assets/images/banners/sl-promo-banner-2.png";
+  static const String promoBanner3 = "assets/images/banners/sl-promo-banner-3.png";
+  static const String promoBanner4 = "assets/images/banners/sl-promo-banner-4.png";
+  static const String promoBanner5 = "assets/images/banners/sl-promo-banner-5.png";
+
+  /// -- Products
+  static const String productImage1 = "assets/images/products/nike-shoes.png";
 }

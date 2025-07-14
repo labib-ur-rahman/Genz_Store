@@ -30,13 +30,7 @@ class NavigationMenu extends StatelessWidget {
             ],
           ),
         ),
-        body: Obx(() {
-          final index = controller.selectedIndex.value;
-          if (index < 0 || index >= controller.screens.length) {
-            return const Center(child: Text('Invalid screen index'));
-          }
-          return controller.screens[index];
-        }),
+        body: Obx(() => controller.screens [controller.selectedIndex.value]),
     );
   }
 }
@@ -44,12 +38,12 @@ class NavigationMenu extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
-  //final screens = [const HomeScreen(), Container(color: Colors.green), Container(color: Colors.blue), Container(color: Colors.yellow,)];
+  final screens = [HomeScreen(), Container(color: Colors.green), Container(color: Colors.blue), Container(color: Colors.yellow,)];
 
-  final List<Widget> screens = [
-    const HomeScreen(),
-    Container(color: Colors.green),
-    Container(color: Colors.blue),
-    Container(color: Colors.yellow),
-  ];
+  // final List<Widget> screens = [
+  //   HomeScreen(),
+  //   Container(color: Colors.green),
+  //   Container(color: Colors.blue),
+  //   Container(color: Colors.yellow),
+  // ];
 }

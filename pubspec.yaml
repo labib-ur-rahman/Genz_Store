@@ -20,6 +20,7 @@ dependencies:
   intl: ^0.20.2
   logger: ^2.6.0
   url_launcher: ^6.3.1
+  carousel_slider: ^5.1.1
   flutter_native_splash: ^2.4.6
   smooth_page_indicator: ^1.2.1
   lottie: ^3.3.1
@@ -65,6 +66,8 @@ flutter:
     - assets/icons/brands/
     - assets/icons/categories/
     - assets/icons/category/
+    - assets/images/banners/
+    - assets/images/products/
     - assets/animations/on_boarding_animations/
     - assets/animations/lottie_global/
 
