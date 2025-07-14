@@ -33,13 +33,13 @@ class SLProductCardVertical extends StatelessWidget {
           children: [
             /// Thumbnail, Wishlist Button, Discount Tag
             SLRoundedContainer(
-              height: 180,
+              height: 200,
               padding: const EdgeInsets.all(SLSizes.sm),
               backgroundColor: dark ? SLColors.dark : SLColors.light,
               child: Stack(
                 children: [
                   /// -- Thumbnail Image -----------------------------------------
-                  const SLRoundedImage(imageUrl: SLImages.circleAppLogo, applyImageRadius: true,),
+                  const SLRoundedImage(imageUrl: SLImages.productImage1, applyImageRadius: true,),
 
                   /// -- Sale Tag ------------------------------------------------
                   Positioned(
@@ -105,12 +105,7 @@ class SLProductCardVertical extends StatelessWidget {
                         child: const SizedBox(
                           width: SLSizes.iconLg * 1.2,
                           height: SLSizes.iconLg * 1.2,
-                          child: Center(
-                            child: Icon(
-                              Iconsax.add,
-                              color: SLColors.white,
-                            ),
-                          ),
+                          child: Center(child: Icon(Iconsax.add, color: SLColors.white,),),
                         ),
                       ),
                     ],

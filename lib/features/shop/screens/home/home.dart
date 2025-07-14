@@ -11,7 +11,6 @@ import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/constants/image_strings.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';
-import 'package:iconsax/iconsax.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,7 +35,6 @@ class HomeScreen extends StatelessWidget {
                   /// -- Searchbar ---------------------------------------------
                   SLSearchContainer(
                     text: SLTexts.searchHintText,
-                    icon: Iconsax.search_normal,
                     onTap: () {},
                   ),
 
@@ -73,9 +71,11 @@ class HomeScreen extends StatelessWidget {
                   /// -- Promo Slider ------------------------------------------
                   SLPromoSlider(
                     banners: [
-                      SLImages.squareAppLogo,
-                      SLImages.squareAppLogo,
-                      SLImages.squareAppLogo,
+                      SLImages.promoBanner1,
+                      SLImages.promoBanner2,
+                      SLImages.promoBanner3,
+                      SLImages.promoBanner4,
+                      SLImages.promoBanner5,
                     ],
                   ),
 
@@ -93,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                   /// -- Popular Products --------------------------------------
                   SLGridLayout(itemCount: 10, itemBuilder: (_, index) => const SLProductCardVertical(),)
                 ]
-              )
+              ),
             ),
           ],
         ),

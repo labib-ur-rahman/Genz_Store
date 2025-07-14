@@ -17,7 +17,7 @@ class SLHomeCategories extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
           return SLVerticalImageText(
-            image: SLImages.circleAppLogo,
+            image: SLImages.slDiamondIcon,
             title: 'Diamond',
             onTap: () {},
           );
