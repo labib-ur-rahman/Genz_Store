@@ -12,13 +12,15 @@ class SLSearchContainer extends StatelessWidget {
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
     this.showBorder = true,
-    required this.onTap,
+    this.onTap,
+    this.padding = const EdgeInsets.symmetric(horizontal: SLSizes.defaultSpace),
   });
 
   final String text;
   final IconData? icon;
   final bool showBackground, showBorder;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;  // Noted
+  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class SLSearchContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: SLSizes.defaultSpace),
+        padding: padding,
         child: Container(
           width: SLDeviceUtils.getScreenWidth(context),
           padding: const EdgeInsets.all(SLSizes.md),

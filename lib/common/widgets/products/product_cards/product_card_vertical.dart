@@ -5,6 +5,7 @@ import 'package:genz_store/common/widgets/icons/sl_circular_icon.dart';
 import 'package:genz_store/common/widgets/images/sl_rounded_images.dart';
 import 'package:genz_store/common/widgets/texts/product_price_text.dart';
 import 'package:genz_store/common/widgets/texts/product_title_text.dart';
+import 'package:genz_store/common/widgets/texts/sl_brand_title_text_with_verified_icon.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/constants/image_strings.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
@@ -33,7 +34,7 @@ class SLProductCardVertical extends StatelessWidget {
           children: [
             /// Thumbnail, Wishlist Button, Discount Tag
             SLRoundedContainer(
-              height: 200,
+              //height: 180,
               padding: const EdgeInsets.all(SLSizes.sm),
               backgroundColor: dark ? SLColors.dark : SLColors.light,
               child: Stack(
@@ -73,45 +74,52 @@ class SLProductCardVertical extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SLProductTitleText(title: 'Green Nike Air Shoes', smallSize: true,),
-                  const SizedBox(height: SLSizes.spaceBtwItems / 2),
-                  Row(
-                    children: [
-                      Text('Nike', overflow: TextOverflow.ellipsis, maxLines: 1, style: Theme.of(context).textTheme.labelMedium,),
-                      const SizedBox(width: SLSizes.xs),
-                      const Icon(Iconsax.verify5, color: SLColors.primary, size: SLSizes.iconXs,),
-                    ],
-                  ),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      /// Price
-                      SLProductPriceText(price: '35.5', isLarge: true,),
-
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: SLColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(
-                              SLSizes.cardRadiusMd,
-                            ),
-                            bottomRight: Radius.circular(
-                              SLSizes.productImageRadius,
-                            ),
-                          ),
-                        ),
-
-                        child: const SizedBox(
-                          width: SLSizes.iconLg * 1.2,
-                          height: SLSizes.iconLg * 1.2,
-                          child: Center(child: Icon(Iconsax.add, color: SLColors.white,),),
-                        ),
-                      ),
-                    ],
-                  ),
+                  SLProductTitleText(title: 'Green Nike Air Shoes', smallSize: true,),
+                  SizedBox(height: SLSizes.spaceBtwItems / 2),
+                  SLBrandTitleWithVerifiedIcon(title: 'Nike'),
+                  // Row(
+                  //   children: [
+                  //     Text('Nike', overflow: TextOverflow.ellipsis, maxLines: 1, style: Theme.of(context).textTheme.labelMedium,),
+                  //     const SizedBox(width: SLSizes.xs),
+                  //     const Icon(Iconsax.verify5, color: SLColors.primary, size: SLSizes.iconXs,),
+                  //   ],
+                  // ),
                 ],
               ),
+            ),
+
+            // Todo: Add Spacer() here to keep the height of each Box same in case 1 or 2 lines Of Headings
+            Spacer(),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /// Price
+                const Padding(
+                  padding: EdgeInsets.only(left: SLSizes.sm),
+                  child: SLProductPriceText(price: '36.5'),
+                ),
+
+                Container(
+                  decoration: const BoxDecoration(
+                    color: SLColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(
+                        SLSizes.cardRadiusMd,
+                      ),
+                      bottomRight: Radius.circular(
+                        SLSizes.productImageRadius,
+                      ),
+                    ),
+                  ),
+
+                  child: const SizedBox(
+                    width: SLSizes.iconLg * 1.2,
+                    height: SLSizes.iconLg * 1.2,
+                    child: Center(child: Icon(Iconsax.add, color: SLColors.white,),),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

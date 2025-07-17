@@ -20,7 +20,7 @@ class SLPromoSlider extends StatelessWidget {
       children: [
         CarouselSlider(
           options: CarouselOptions(
-            aspectRatio: 16/9,
+            aspectRatio: 18/9,
             viewportFraction: 1,
             initialPage: 0,
             enableInfiniteScroll: true,

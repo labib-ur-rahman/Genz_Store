@@ -22,6 +22,7 @@ class SLImages {
   /// -- Categories
   static const String icDiamond = "assets/icons/categories/sl-sparkling-diamond.png";
   static const String slDiamondIcon = "assets/icons/category/sl-sparkling-diamond-64.png";
+  static const String slClothIcon = "assets/icons/categories/sl-tailors-dummy-64.png";
 
   /// -- Banners
   static const String promoBanner1 = "assets/images/banners/sl-promo-banner-1.png";
@@ -32,4 +33,5 @@ class SLImages {
 
   /// -- Products
   static const String productImage1 = "assets/images/products/nike-shoes.png";
+  static const String productImage2 = "assets/images/products/nike-shirt.png";
 }

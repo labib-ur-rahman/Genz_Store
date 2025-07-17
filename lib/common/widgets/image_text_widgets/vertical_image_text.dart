@@ -9,7 +9,7 @@ class SLVerticalImageText extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = SLColors.white,
-    this.backgroundColor = SLColors.white,
+    this.backgroundColor,
     this.onTap,
   });
 
@@ -35,8 +35,7 @@ class SLVerticalImageText extends StatelessWidget {
               height: 56,
               padding: const EdgeInsets.all(SLSizes.sm),
               decoration: BoxDecoration(
-                color:
-                    backgroundColor ?? (dark ? SLColors.black : SLColors.white),
+                color: backgroundColor ?? (dark ? SLColors.black : SLColors.white),
                 borderRadius: BorderRadius.circular(100),
               ),
               child: Center(

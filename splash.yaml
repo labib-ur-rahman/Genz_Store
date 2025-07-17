@@ -6,11 +6,11 @@ flutter_native_splash:
 
 
   # GLOBAL Style ----------------------------------------------
-  color: "#ffffff"
-  color_dark: "#272727"
+  color: "#000A78"
+  color_dark: "#000A78"
 
-  image: assets/logos/genz-store-splash-screen-logo-circle.png
-  image_dark: assets/logos/genz-store-splash-screen-logo-circle.png
+  image: assets/logos/genz-store-splash-screen-640.png
+  image_dark: assets/logos/genz-store-splash-screen-640.png
 
   #image: assets/splash.png
   #image_dark: assets/splash-invert.png
@@ -23,11 +23,11 @@ flutter_native_splash:
 
   # Android 12+  ----------------------------------------------
   android_12:
-    color: "#ffffff"
-    color_dark: "#272727"
+    color: "#000A78"
+    color_dark: "#000A78"
 
-    image: assets/logos/genz-store-splash-screen-logo-circle.png
-    image_dark: assets/logos/genz-store-splash-screen-logo-circle.png
+    image: assets/logos/genz-store-splash-screen-640.png
+    image_dark: assets/logos/genz-store-splash-screen-640.png
 
     #icon_background_color: "#111111"
     #icon_background_color_dark: "#eeeeee"
@@ -48,10 +48,10 @@ flutter_native_splash:
   #color_dark_ios: "#042a49"
   #color_web: "#42a5f5"
   #color_dark_web: "#042a49"
-  #image_android: assets/logos/genz-store-splash-screen-logo-circle.png
-  #image_dark_android: assets/logos/genz-store-splash-screen-logo-circle.png
-  #image_ios: assets/logos/genz-store-splash-screen-logo-circle.png
-  #image_dark_ios: aassets/logos/genz-store-splash-screen-logo-circle.png
+  #image_android: assets/logos/genz-store-splash-screen-640.png
+  #image_dark_android: assets/logos/genz-store-splash-screen-640.png
+  #image_ios: assets/logos/genz-store-splash-screen-640.png
+  #image_dark_ios: aassets/logos/genz-store-splash-screen-640.png
   #image_web: assets/splash-web.gif
   #image_dark_web: assets/splash-invert-web.gif
   #background_image_android: "assets/background-android.png"

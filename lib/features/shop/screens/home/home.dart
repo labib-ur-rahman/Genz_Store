@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                   SLSectionHeading(
                     title: SLTexts.popularProducts,
                     showActionButton: true,
-                    textColor: SLColors.black,
+                    onPressed: () {},
                   ),
 
                   const SizedBox(height: SLSizes.spaceBtwItems),

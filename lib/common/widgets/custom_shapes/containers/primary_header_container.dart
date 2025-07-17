@@ -17,7 +17,7 @@ class SLPrimaryHeaderContainer extends StatelessWidget {
         color: SLColors.primary,
         padding: const EdgeInsets.all(0),
         child: SizedBox(
-          height: 375,
+          height: 400,
           child: Stack(
             children: [
               Positioned(top: -150, right: -250, child: SLCircularContainer(backgroundColor: SLColors.textWhite.withOpacity(0.1),),),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:genz_store/utils/constants/colors.dart';
+import 'package:genz_store/utils/helpers/helper_functions.dart';
 
 class SLSectionHeading extends StatelessWidget {
   const SLSectionHeading({
@@ -17,15 +19,25 @@ class SLSectionHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = SLHelperFunctions.isDarkMode(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title,
-          style: Theme.of(context,).textTheme.headlineSmall!.apply(color: textColor),
+        Text(
+          title,
+          style: Theme.of(context).textTheme.headlineSmall!.apply(
+            color: (textColor == null)
+                ? dark
+                      ? SLColors.white
+                      : SLColors.black
+                : textColor,
+          ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        if (showActionButton) TextButton(onPressed: onPressed, child: Text(buttonTitle)),
+        if (showActionButton)
+          TextButton(onPressed: onPressed, child: Text(buttonTitle)),
       ],
     );
   }
