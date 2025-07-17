@@ -48,7 +48,7 @@ class VerifyEmailScreen extends StatelessWidget {
               const SizedBox(height: SLSizes.spaceBtwItems),
 
               Text(
-                SLTexts.emailAuthor,
+                SLTexts.authorEmail,
                 style: Theme.of(context).textTheme.labelLarge,
                 textAlign: TextAlign.center,
               ),

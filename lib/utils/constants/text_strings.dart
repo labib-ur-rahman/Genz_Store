@@ -3,7 +3,14 @@ class SLTexts {
   /// -- GLOBAL Texts
   static const String labibUrRahman = 'Labib UR Rahman';
   static const String labib = 'Labib';
-  static const String emailAuthor = 'contact.labibur@gmail.com';
+  static const String authorName = 'Labib UR Rahman';
+  static const String authorNickname = 'Labib';
+  static const String authorUsername = 'labib_ur_rahman';
+  static const String authorDOB = 'October 20, 2002';
+  static const String authorEmail = 'contact.labibur@gmail.com';
+  static const String authorPhoneNo = '+8801602475999';
+  static const String authorFevNo = '282720';
+  static const String authorGender = 'Male';
 
   /// -- App Name
   static const String appName = 'GenZ Store';

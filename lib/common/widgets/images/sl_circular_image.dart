@@ -26,25 +26,28 @@ class SLCircularImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = SLHelperFunctions.isDarkMode(context);
+
     return Container(
       width: width,
       height: height,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         // If image background color is null then switch it to light and dark mode color design.
-        color: backgroundColor ??
-            (SLHelperFunctions.isDarkMode(context) ? SLColors.black : SLColors
-                .white),
+        color: backgroundColor ?? ( dark ? SLColors.black : SLColors.white),
         borderRadius: BorderRadius.circular(100),
       ),
 
       // BoxDecoration
       child: Center(
-        child: Image(
-          fit: fit,
-          image: isNetworkImage ? NetworkImage(image) : AssetImage(
-              image) as ImageProvider,
-          color: overlayColor,
+        child: ClipOval(
+          child: Image(
+            width: width,
+            height: height,
+            fit: fit,
+            image: isNetworkImage ? NetworkImage(image) : AssetImage(image) as ImageProvider,
+            color: overlayColor,
+          ),
         ),
       ),
     );

@@ -6,10 +6,12 @@ import 'package:genz_store/common/widgets/images/sl_rounded_images.dart';
 import 'package:genz_store/common/widgets/texts/product_price_text.dart';
 import 'package:genz_store/common/widgets/texts/product_title_text.dart';
 import 'package:genz_store/common/widgets/texts/sl_brand_title_text_with_verified_icon.dart';
+import 'package:genz_store/features/shop/screens/product_details/product_details.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/constants/image_strings.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SLProductCardVertical extends StatelessWidget {
@@ -20,7 +22,7 @@ class SLProductCardVertical extends StatelessWidget {
     final dark = SLHelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => const ProductDetailsScreen()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),

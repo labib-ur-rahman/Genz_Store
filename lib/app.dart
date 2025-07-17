@@ -1,9 +1,10 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:genz_store/navigation_menu.dart';
 import 'package:get/get.dart';
 import 'package:genz_store/utils/theme/theme.dart';
+
+import 'features/shop/screens/product_details/product_details.dart';
 
 /// -- Use this Class to setup themes, initial Bindings, any animations and much more using Material Widget.
 class App extends StatefulWidget {
@@ -39,7 +40,11 @@ class _AppState extends State<App> {
       themeMode: ThemeMode.system,
       theme: SLAppTheme.lightTheme,
       darkTheme: SLAppTheme.darkTheme,
-      home: const NavigationMenu(),
+      ///-- Permanent Route
+      //home: const NavigationMenu(),
+
+      ///-- Temporary Route
+      home: const ProductDetailsScreen(),
     );
   }
 }
