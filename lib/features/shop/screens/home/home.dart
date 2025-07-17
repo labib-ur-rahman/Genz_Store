@@ -25,7 +25,6 @@ class HomeScreen extends StatelessWidget {
             SLPrimaryHeaderContainer(
               child: Column(
                 children: [
-                  const SizedBox(height: SLSizes.xs),
 
                   /// -- Appbar ------------------------------------------------
                   SLHomeAppBar(),
@@ -59,6 +58,8 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+
+                  const SizedBox(height: SLSizes.spaceMaxBelow),
                 ],
               ),
             ),

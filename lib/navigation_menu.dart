@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genz_store/features/shop/screens/home/home.dart';
+import 'package:genz_store/features/shop/screens/settings/settings.dart';
 import 'package:genz_store/features/shop/screens/wishlist/wishlist.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/helpers/helper_functions.dart';
@@ -48,6 +49,6 @@ class NavigationController extends GetxController {
     const HomeScreen(),
     const StoreScreen(),
     const FavouriteScreen(),
-    Container(color: Colors.yellow),
+    const SettingsScreen(),
   ];
 }

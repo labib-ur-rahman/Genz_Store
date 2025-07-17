@@ -34,4 +34,7 @@ class SLImages {
   /// -- Products
   static const String productImage1 = "assets/images/products/nike-shoes.png";
   static const String productImage2 = "assets/images/products/nike-shirt.png";
+
+  /// -- User
+  static const String user = "assets/user/user.png";
 }
