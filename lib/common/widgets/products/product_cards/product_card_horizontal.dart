@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:genz_store/common/styles/shadows.dart';
 import 'package:genz_store/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:genz_store/common/widgets/icons/sl_circular_icon.dart';
 import 'package:genz_store/common/widgets/images/sl_rounded_images.dart';

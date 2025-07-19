@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:genz_store/common/widgets/appbar/appbar.dart';
 import 'package:genz_store/common/widgets/products/rating/rating_indicator.dart';
 import 'package:genz_store/features/shop/screens/product_reviews/widgets/rating_progress_indicator.dart';
 import 'package:genz_store/features/shop/screens/product_reviews/widgets/user_rating_card.dart';
-import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
-import 'package:iconsax/iconsax.dart';
 
 class ProductReviewsScreen extends StatelessWidget {
   const ProductReviewsScreen({super.key});

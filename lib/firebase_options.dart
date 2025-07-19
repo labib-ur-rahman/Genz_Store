@@ -60,13 +60,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBZptn7fUOj2h0nJD5di-jZ3GLhG1ooQNQ',
-    appId: '1:804302570735:ios:52623301cd9027a00f871a',
+    appId: '1:804302570735:ios:be3e1b5a66bef2740f871a',
     messagingSenderId: '804302570735',
     projectId: 'softylasa-genz-store',
     storageBucket: 'softylasa-genz-store.firebasestorage.app',
     androidClientId: '804302570735-ffkp8f81gqlk3tmfphe5773tto9ffp0e.apps.googleusercontent.com',
-    iosClientId: '804302570735-g0jga087s916mpmht47tkhiqrbor636p.apps.googleusercontent.com',
-    iosBundleId: 'com.example.genzStore',
+    iosClientId: '804302570735-i4btidp5lv00pricqte27meb7tbhq1vf.apps.googleusercontent.com',
+    iosBundleId: 'com.softylasa.genzStore',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -82,12 +82,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyDpF4doDikzGjMk_FhHdo9Y6YnO25HvoLo',
-    appId: '1:804302570735:web:6f259f006be32aec0f871a',
+    appId: '1:804302570735:web:cf9a1d8deec464f90f871a',
     messagingSenderId: '804302570735',
     projectId: 'softylasa-genz-store',
     authDomain: 'softylasa-genz-store.firebaseapp.com',
     storageBucket: 'softylasa-genz-store.firebasestorage.app',
-    measurementId: 'G-TNSXDHKDXR',
+    measurementId: 'G-DKT4NW38GD',
   );
 
 }
