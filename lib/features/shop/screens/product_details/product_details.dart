@@ -5,7 +5,9 @@ import 'package:genz_store/features/shop/screens/product_details/widgets/product
 import 'package:genz_store/features/shop/screens/product_details/widgets/product_details_image_slider.dart';
 import 'package:genz_store/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:genz_store/features/shop/screens/product_details/widgets/rating_share_widgets.dart';
+import 'package:genz_store/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
@@ -65,8 +67,11 @@ class ProductDetailsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const SLSectionHeading (title: 'Reviews (199)', showActionButton: false),
-                      IconButton(icon: const Icon(Iconsax.arrow_right_3, size: 18), onPressed: () {}),
+                      InkWell(
+                          onTap: () => Get.to(() => const ProductReviewsScreen()),
+                          child: const SLSectionHeading (title: 'Reviews (199)', showActionButton: false)
+                      ),
+                      IconButton(icon: const Icon(Iconsax.arrow_right_3, size: 18), onPressed: () => Get.to(() => const ProductReviewsScreen())),
                     ],
                   ),
                   const SizedBox (height: SLSizes.spaceBtwSections),

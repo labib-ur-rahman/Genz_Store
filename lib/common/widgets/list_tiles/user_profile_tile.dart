@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:genz_store/common/widgets/images/sl_circular_image.dart';
+import 'package:genz_store/features/personalization/screens/profile/profile.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/constants/image_strings.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SLUserProfileTile extends StatelessWidget {
@@ -32,7 +34,7 @@ class SLUserProfileTile extends StatelessWidget {
       ),
 
       trailing: IconButton(
-        onPressed: () {},
+        onPressed: () => Get.to(() => const ProfileScreen()),
         icon: const Icon(Iconsax.edit, color: SLColors.white),
       ),
     );

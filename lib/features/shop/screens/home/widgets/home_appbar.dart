@@ -20,7 +20,7 @@ class SLHomeAppBar extends StatelessWidget {
         ],
       ),
       actions: [
-        SLCartCounterIcon(onPressed: () {}, iconColor: SLColors.white)
+        SLCartCounterIcon(iconColor: SLColors.white)
       ],
     );
   }

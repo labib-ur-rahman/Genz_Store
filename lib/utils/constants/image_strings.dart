@@ -37,4 +37,10 @@ class SLImages {
 
   /// -- User
   static const String user = "assets/user/user.png";
+
+  /// -- Payment Method
+  static const String paypal = "assets/logos/sl-pm-paypal-64.png";
+  static const String stripe = "assets/logos/sl-pm-stripe-64.png";
+  static const String visa = "assets/logos/sl-pm-visa-64.png";
+  static const String googleWallet = "assets/logos/sl-pm-google-wallet-64.png";
 }

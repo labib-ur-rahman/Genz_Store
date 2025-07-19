@@ -12,16 +12,18 @@ class SLBrandCard extends StatelessWidget {
   const SLBrandCard({
     super.key,
     required this.showBorder,
+    this.onTap
   });
 
   final bool showBorder;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     final dark = SLHelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: SLRoundedContainer(
         padding: const EdgeInsets.all(SLSizes.sm),
         showBorder: showBorder,

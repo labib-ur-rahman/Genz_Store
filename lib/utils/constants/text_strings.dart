@@ -11,6 +11,8 @@ class SLTexts {
   static const String authorPhoneNo = '+8801602475999';
   static const String authorFevNo = '282720';
   static const String authorGender = 'Male';
+  static const String authorAddress = 'Mirpur 10, Dhaka, Bangladesh';
+  static const String authorFullAddress = 'Road - 2, Section-6, House - 40, Mirpur, Dhaka - 1216, Bangladesh';
 
   /// -- App Name
   static const String appName = 'GenZ Store';
@@ -38,6 +40,7 @@ class SLTexts {
   /// -- Heading
   static const String popularCategories = 'Popular Categories';
   static const String popularProducts = 'Popular Products';
+  static const String orderReview = 'Order Review';
 
   /// -- Authentication Form Text
   static const String firstName = "First Name";

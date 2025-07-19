@@ -1,10 +1,12 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:genz_store/features/shop/screens/all_products/all_products.dart';
+import 'package:genz_store/features/shop/screens/brand/all_brands.dart';
 import 'package:get/get.dart';
 import 'package:genz_store/utils/theme/theme.dart';
 
-import 'features/shop/screens/product_details/product_details.dart';
+import 'package:genz_store/navigation_menu.dart';
 
 /// -- Use this Class to setup themes, initial Bindings, any animations and much more using Material Widget.
 class App extends StatefulWidget {
@@ -23,10 +25,10 @@ class _AppState extends State<App> {
   }
 
   void initialization() async{
-    print("Pausing...");
+    //print("Pausing...");
     FlutterNativeSplash.remove();
     await Future.delayed(const Duration(seconds: 3));
-    print("Unpausing");
+    //print("Unpausing");
     FlutterNativeSplash.remove();
   }
 
@@ -41,10 +43,10 @@ class _AppState extends State<App> {
       theme: SLAppTheme.lightTheme,
       darkTheme: SLAppTheme.darkTheme,
       ///-- Permanent Route
-      //home: const NavigationMenu(),
+      // home: const NavigationMenu(),
 
       ///-- Temporary Route
-      home: const ProductDetailsScreen(),
+      home: const AllBrandsScreen(),
     );
   }
 }

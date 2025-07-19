@@ -40,10 +40,10 @@ class SLProductImageSlider extends StatelessWidget {
               child: SizedBox(
                 height: 80,
                 child: ListView.separated (
-                  itemCount: 6,
+                  itemCount: 10,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  physics: const AlwaysScrollableScrollPhysics(),
+                  physics: AlwaysScrollableScrollPhysics(),
                   separatorBuilder: (_, __) => const SizedBox (width: SLSizes.spaceBtwItems),
                   itemBuilder: (_, index) => SLRoundedImage(
                     width: 80,
