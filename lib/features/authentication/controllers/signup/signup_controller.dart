@@ -81,7 +81,7 @@ class SignupController extends GetxController {
       SLLoaders.successSnackBar (title: 'Congratulations', message: 'Your account has been created! Verify email to continue.');
 
       /// Move to Verify Email Screen
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
       /// Remove Loader
       SLFullScreenLoader.stopLoading();

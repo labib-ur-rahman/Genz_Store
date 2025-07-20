@@ -51,6 +51,7 @@ class SLLoginForm extends StatelessWidget {
                 Row(
                   children: [
                     SizedBox(width: 24, height: 24, child: Checkbox(value: true, onChanged: (value) {})),
+                    const SizedBox(width: SLSizes.sm),
                     const Text(SLTexts.rememberMe),
                   ],
                 ),
