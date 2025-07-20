@@ -6,6 +6,9 @@ import 'package:genz_store/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../../utils/validators/validation.dart';
+import '../../../controllers/signup/signup_controller.dart';
+
 class SLSignupForm extends StatelessWidget {
   const SLSignupForm({
     super.key,
@@ -13,7 +16,10 @@ class SLSignupForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
+
     return Form(
+      key: controller.signupFormKey,
       child: Column(
         children: [
           /// -- First & Last Name
@@ -21,6 +27,8 @@ class SLSignupForm extends StatelessWidget {
             children: [
               Expanded(
                 child: TextFormField(
+                  controller: controller.firstName,
+                  validator: (value) => SLValidator.validateEmptyText(SLTexts.firstName, value),
                   expands: false,
                   decoration: const InputDecoration(
                     labelText: SLTexts.firstName,
@@ -33,6 +41,8 @@ class SLSignupForm extends StatelessWidget {
 
               Expanded(
                 child: TextFormField(
+                  controller: controller.lastName,
+                  validator: (value) => SLValidator.validateEmptyText(SLTexts.lastName, value),
                   expands: false,
                   decoration: const InputDecoration(
                     labelText: SLTexts.lastName,
@@ -47,6 +57,8 @@ class SLSignupForm extends StatelessWidget {
 
           /// -- Username
           TextFormField(
+            controller: controller.username,
+            validator: (value) => SLValidator.validateUsername(value),
             expands: false,
             decoration: const InputDecoration(
               labelText: SLTexts.username,
@@ -58,6 +70,8 @@ class SLSignupForm extends StatelessWidget {
 
           /// -- Email
           TextFormField(
+            controller: controller.email,
+            validator: (value) => SLValidator.validateEmail(value),
             expands: false,
             decoration: const InputDecoration(
               labelText: SLTexts.email,
@@ -69,6 +83,8 @@ class SLSignupForm extends StatelessWidget {
 
           /// -- Phone Number
           TextFormField(
+            controller: controller.phoneNumber,
+            validator: (value) => SLValidator.validatePhoneNumber(value),
             expands: false,
             decoration: const InputDecoration(
               labelText: SLTexts.phoneNo,
@@ -79,13 +95,20 @@ class SLSignupForm extends StatelessWidget {
           const SizedBox(height: SLSizes.spaceBtwInputFields),
 
           /// -- Password
-          TextFormField(
-            obscureText: true,
-            expands: false,
-            decoration: const InputDecoration(
-              labelText: SLTexts.password,
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash),
+          Obx(
+            () => TextFormField(
+              controller: controller.password,
+              validator: (value) => SLValidator.validatePassword(value),
+              obscureText: controller.hidePassword.value,
+              expands: false,
+              decoration: InputDecoration(
+                labelText: SLTexts.password,
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton (
+                  onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
+                  icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye),
+                ),
+              ),
             ),
           ),
 
@@ -96,11 +119,11 @@ class SLSignupForm extends StatelessWidget {
 
           const SizedBox(height: SLSizes.spaceBtwSections),
 
-          /// Sign Up Button
+          /// Sign Up Button ---------------------------------------------------
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => Get.to(() => const VerifyEmailScreen()),
+              onPressed: () => controller.signup(),
               child: const Text(SLTexts.createAccount),
             ),
           ),

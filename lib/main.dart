@@ -1,31 +1,37 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:genz_store/firebase_options.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'app.dart';
+import 'data/repositories/authentication/authentication_repository.dart';
 
-/*Future<void> main() async {
-  // Todo: Add Widgets Binding
-  // Todo: Init Local Storage
+/// -- Entry Point of the GenZ Store Application
+Future<void> main() async {
+  /// -- Add Widgets Binding
+  final WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  /// -- GetX Local Storage
+  await GetStorage.init();
+
+  /// -- Await Splash until other items Load
+  FlutterNativeSplash.preserve (widgetsBinding: widgetsBinding);
+
+  /// -- Initialize Firebase & Authentication Repository
+  await Firebase.initializeApp (options: DefaultFirebaseOptions.currentPlatform).then(
+        (FirebaseApp value) => Get.put(AuthenticationRepository()),
+  );
+
   // Todo: Init Payment Methods
-  // Todo: Await Native Splash Screen
   // Todo: Initialize Firebase
-
-  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then(
-  //   (FirebaseApp value) => Get.put(AuthenticationRepository()),
-  // );
   // Todo: Initialize Firebase Authentication
 
-  runApp(const App());
-}
+  /// -- Load all the Material Design / Themes / Localizations / Bindings
+  //runApp(const App());
 
-void main(){
-  runApp(const App());
-}*/
-
-void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,

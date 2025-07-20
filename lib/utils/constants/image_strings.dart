@@ -15,9 +15,10 @@ class SLImages {
   static const String onBoardingAnimations2 = "assets/animations/on_boarding_animations/lottie-shopping-cart.json";
   static const String onBoardingAnimations3 = "assets/animations/on_boarding_animations/lottie-delivery-service.json";
 
-  /// -- Auth Images
+  /// -- Lottie Animation
   static const String emailVerification = "assets/animations/lottie_global/lottie-email-verification.json";
   static const String successfulCheck = "assets/animations/lottie_global/lottie-successful.json";
+  static const String docerAnimation = "assets/animations/lottie_global/lottie-animation-of-docer.json";
 
   /// -- Categories
   static const String icDiamond = "assets/icons/categories/sl-sparkling-diamond.png";
