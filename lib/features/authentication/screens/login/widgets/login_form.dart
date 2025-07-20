@@ -4,25 +4,29 @@ import 'package:genz_store/features/authentication/screens/signup/signup.dart';
 import 'package:genz_store/navigation_menu.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';
+import 'package:genz_store/utils/validators/validation.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../controllers/login/login_controller.dart';
+
 class SLLoginForm extends StatelessWidget {
-  const SLLoginForm({
-    super.key,
-  });
+  const SLLoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
+
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: SLSizes.spaceBtwSections,
-        ),
+        padding: const EdgeInsets.symmetric(vertical: SLSizes.spaceBtwSections),
         child: Column(
           children: [
             /// -- Email
             TextFormField(
+              controller: controller.email,
+              validator: (value) => SLValidator.validateEmail(value),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Iconsax.direct_right),
                 labelText: SLTexts.email,
@@ -32,12 +36,26 @@ class SLLoginForm extends StatelessWidget {
             const SizedBox(height: SLSizes.spaceBtwInputFields),
 
             /// -- Password
-            TextFormField(
-              obscureText: true,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.password_check),
-                labelText: SLTexts.password,
-                suffixIcon: Icon(Iconsax.eye_slash),
+            Obx(
+              () => TextFormField(
+                controller: controller.password,
+                validator: (value) =>
+                    SLValidator.validateEmptyText('Password', value),
+                obscureText: controller.hidePassword.value,
+                expands: false,
+                decoration: InputDecoration(
+                  labelText: SLTexts.password,
+                  prefixIcon: const Icon(Iconsax.password_check),
+                  suffixIcon: IconButton(
+                    onPressed: () => controller.hidePassword.value =
+                        !controller.hidePassword.value,
+                    icon: Icon(
+                      controller.hidePassword.value
+                          ? Iconsax.eye_slash
+                          : Iconsax.eye,
+                    ),
+                  ),
+                ),
               ),
             ),
 
@@ -50,7 +68,16 @@ class SLLoginForm extends StatelessWidget {
                 /// Remember Me
                 Row(
                   children: [
-                    SizedBox(width: 24, height: 24, child: Checkbox(value: true, onChanged: (value) {})),
+                    SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: Obx(
+                        () => Checkbox(
+                          value: controller.rememberMe.value,
+                          onChanged: (value) => controller.rememberMe.value = !controller.rememberMe.value,
+                        ),
+                      ),
+                    ),
                     const SizedBox(width: SLSizes.sm),
                     const Text(SLTexts.rememberMe),
                   ],
@@ -70,7 +97,7 @@ class SLLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Get.to(() => const NavigationMenu()),
+                onPressed: () => controller.emailAndPasswordSignIn(),
                 child: const Text(SLTexts.signIn),
               ),
             ),
@@ -81,7 +108,7 @@ class SLLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: ()  => Get.to(() => const SignupScreen()),
+                onPressed: () => Get.to(() => const SignupScreen()),
                 child: const Text(SLTexts.createAccount),
               ),
             ),
