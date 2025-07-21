@@ -7,6 +7,7 @@ import '../../../../data/repositories/authentication/authentication_repository.d
 import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/manager/network_manager.dart';
 import '../../../../utils/popups/full_screen_loader.dart';
+import '../../../personalization/controllers/user_controller.dart';
 
 class LoginController extends GetxController {
   /// -- Variables -------------------------------------------------------------
@@ -16,12 +17,16 @@ class LoginController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final userController = Get.put(UserController());
 
   @override
   void onInit() {
-    email.text = localStorage.read('REMEMBER_ME_EMAIL') ?? ''; // Handle null case
-    password.text = localStorage.read('REMEMBER_ME_PASSWORD') ?? ''; // Handle null case
-    rememberMe.value = localStorage.read('REMEMBER_ME_CHECKBOX') ?? false; // Handle null case
+    email.text =
+        localStorage.read('REMEMBER_ME_EMAIL') ?? ''; // Handle null case
+    password.text =
+        localStorage.read('REMEMBER_ME_PASSWORD') ?? ''; // Handle null case
+    rememberMe.value =
+        localStorage.read('REMEMBER_ME_CHECKBOX') ?? false; // Handle null case
     super.onInit();
   }
 
@@ -29,7 +34,8 @@ class LoginController extends GetxController {
   Future<void> emailAndPasswordSignIn() async {
     try {
       /// Start Loading
-      SLFullScreenLoader.openLoadingDialog('Logging you in...', SLImages.docerAnimation);
+      SLFullScreenLoader.openLoadingDialog(
+          'Logging you in...', SLImages.docerAnimation);
 
       /// Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -40,7 +46,7 @@ class LoginController extends GetxController {
       }
 
       /// Form Validation
-      if(!loginFormKey.currentState!.validate()) {
+      if (!loginFormKey.currentState!.validate()) {
         /// Remove Loader
         SLFullScreenLoader.stopLoading();
         return;
@@ -59,7 +65,8 @@ class LoginController extends GetxController {
       }
 
       /// Register user in the Firebase Authentication & Save user data in the Firebase
-      final userCredential = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
+      final userCredential = await AuthenticationRepository.instance
+          .loginWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       /// Remove Loader
       SLFullScreenLoader.stopLoading();
@@ -72,6 +79,46 @@ class LoginController extends GetxController {
 
       /// Show some Generic Error to the user
       SLLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  /// -- Google SignIn Authentication ------------------------------------------
+
+  Future<void> googleSignIn() async {
+    try {
+      // Start Loading
+      SLFullScreenLoader.openLoadingDialog('Logging you in...', SLImages.docerAnimation);
+
+      // Check Internet Connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+
+      if (!isConnected) {
+        SLFullScreenLoader.stopLoading();
+        return;
+      }
+
+      // Google Authentication
+      final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
+
+      if (userCredentials == null) {
+        SLFullScreenLoader.stopLoading();
+        SLLoaders.errorSnackBar(title: 'Error', message: 'Google sign-in failed');
+        return;
+      }
+
+      // Save user record
+      await userController.saveUserRecord(userCredentials);
+
+      // Remove Loader
+      SLFullScreenLoader.stopLoading();
+
+      // Redirect to Home Screen
+      AuthenticationRepository.instance.screenRedirect();
+
+    } catch (e) {
+      // Remove Loader
+      SLFullScreenLoader.stopLoading();
+      SLLoaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
     }
   }
 }

@@ -83,5 +83,4 @@ class SLTexts {
   static const String yourAccountCreatedTitle = "Your account successfully created!";
   static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate shopping destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping";
 
-
 }
