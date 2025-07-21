@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../../../utils/formetters/formetters.dart';
 
 /// Model class representing user data.
@@ -38,14 +40,23 @@ class UserModel {
     String firstName = nameParts[0].toLowerCase();
     String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : "";
 
-    String camelCaseUsername = "$firstName$lastName"; // Combine first and last name
+    String camelCaseUsername =
+        "$firstName$lastName"; // Combine first and last name
     String usernameWithPrefix = "sl_$camelCaseUsername"; // Add "sl_" prefix
     return usernameWithPrefix;
   }
 
   /// Static function to create an empty user model.
 
-  static UserModel empty() => UserModel(id: '', firstName: '', lastName: '', username: '', email: '', phoneNumber: '', profilePicture: '');
+  static UserModel empty() => UserModel(
+    id: '',
+    firstName: '',
+    lastName: '',
+    username: '',
+    email: '',
+    phoneNumber: '',
+    profilePicture: '',
+  );
 
   /// Convert model to JSON structure for storing data in Firebase.
   Map<String, dynamic> toJson() {
@@ -57,5 +68,23 @@ class UserModel {
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
     };
+  }
+
+  /// Factory method to create a UserModel from a Firebase document snapshot.
+  factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() != null) {
+      final data = document.data()!;
+      return UserModel(
+        id: document.id,
+        firstName: data['FirstName'] ?? '',
+        lastName: data['LastName'] ?? '',
+        username: data['Username'] ?? '',
+        email: data['Email'] ?? '',
+        phoneNumber: data['PhoneNumber'] ?? '',
+        profilePicture: data['ProfilePicture'] ?? '',
+      );
+    } else {
+      return UserModel.empty();
+    }
   }
 }

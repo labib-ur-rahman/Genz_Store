@@ -41,6 +41,8 @@ class SLTexts {
   static const String popularCategories = 'Popular Categories';
   static const String popularProducts = 'Popular Products';
   static const String orderReview = 'Order Review';
+  static const String profileInfo = 'Profile Information';
+  static const String personalInfo = 'Personal Information';
 
   /// -- Authentication Form Text
   static const String firstName = "First Name";
@@ -68,6 +70,15 @@ class SLTexts {
   static const String slContinue = 'Continue';
   static const String slSubmit = 'Submit';
   static const String slDone = 'Done';
+  static const String delete = 'Delete';
+  static const String cancel = 'Cancel';
+  static const String name = 'Name';
+  static const String userId = 'User ID';
+  static const String gender = 'Gender';
+  static const String dob = 'Date of Birth';
+  static const String changeProfilePic = 'Change Profile Picture';
+  static const String changeName = 'Change Name';
+  static const String closeAccount = 'Close Account';
 
   /// -- Authentication Heading Text
   static const String loginTitle = 'Welcome Back';
@@ -82,5 +93,9 @@ class SLTexts {
   static const String emailNotReceivedMessage = "Don't get the email? Check your junk/spam or resend it.";
   static const String yourAccountCreatedTitle = "Your account successfully created!";
   static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate shopping destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping";
+
+  /// -- Dialog Text
+  static const String deleteAccount = 'Delete Account';
+  static const String deleteAccountMessage = 'Are you sure you want to delete your account permanently? This action is not reversible and all of your data will be removed permanently.';
 
 }

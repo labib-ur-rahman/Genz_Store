@@ -2,17 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:genz_store/common/widgets/appbar/appbar.dart';
 import 'package:genz_store/common/widgets/images/sl_circular_image.dart';
 import 'package:genz_store/common/widgets/texts/section_heading.dart';
+import 'package:genz_store/features/personalization/screens/profile/change_name.dart';
 import 'package:genz_store/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:genz_store/utils/constants/image_strings.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../../../../utils/manager/dialog_manager.dart';
+import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
+
     return Scaffold(
       appBar: const SLAppBar(showBackArrow: true, title: Text('Profile')),
 
@@ -30,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     const SLCircularImage(image: SLImages.user, width: 80, height: 80,),
-                    TextButton(onPressed: () {}, child: const Text('Change Profile Picture')),
+                    TextButton(onPressed: () {}, child: const Text(SLTexts.changeProfilePic)),
                   ],
                 ),
               ),
@@ -41,32 +48,36 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: SLSizes.spaceBtwItems),
 
               /// Heading Profile Info
-              const SLSectionHeading(title: 'Profile Information', showActionButton: false,),
+              const SLSectionHeading(title: SLTexts.profileInfo, showActionButton: false,),
               const SizedBox(height: SLSizes.spaceBtwItems),
 
-              SLProfileMenu(title: 'Name', value: SLTexts.authorName, onPressed: () {},),
-              SLProfileMenu(title: 'Username', value: SLTexts.authorUsername, onPressed: () {},),
+              SLProfileMenu(title: SLTexts.name, value: controller.user.value.fullName, onPressed: () => Get.to(() => const ChangeName())),
+              SLProfileMenu(title: SLTexts.username, value: controller.user.value.username, onPressed: () {},),
 
               const SizedBox(height: SLSizes.spaceBtwItems),
               const Divider(),
               const SizedBox(height: SLSizes.spaceBtwItems),
 
               /// Heading Personal Info
-              const SLSectionHeading(title: 'Personal Information', showActionButton: false,),
+              const SLSectionHeading(title: SLTexts.personalInfo, showActionButton: false,),
               const SizedBox(height: SLSizes.spaceBtwItems),
 
-              SLProfileMenu(title: 'User ID', value: SLTexts.authorFevNo, icon: Iconsax.copy, onPressed: () {}),
-              SLProfileMenu(title: 'E-mail', value: SLTexts.authorEmail, onPressed: () {},),
-              SLProfileMenu(title: 'Phone Number', value: SLTexts.authorPhoneNo, onPressed: () {},),
-              SLProfileMenu(title: 'Gender', value: SLTexts.authorGender, onPressed: () {}),
-              SLProfileMenu(title: 'Date of Birth', value: SLTexts.authorDOB, onPressed: () {},),
+              SLProfileMenu(title: SLTexts.userId, value: controller.user.value.id, icon: Iconsax.copy, onPressed: () {}),
+              SLProfileMenu(title: SLTexts.email, value: controller.user.value.email, onPressed: () {},),
+              SLProfileMenu(title: SLTexts.phoneNo, value: controller.user.value.phoneNumber, onPressed: () {},),
+              SLProfileMenu(title: SLTexts.gender, value: SLTexts.authorGender, onPressed: () {}),
+              SLProfileMenu(title: SLTexts.dob, value: SLTexts.authorDOB, onPressed: () {},),
 
               const Divider(),
               const SizedBox (height: SLSizes.spaceBtwItems),
               Center(
                 child: TextButton(
-                  onPressed: () {},
-                  child: const Text('Close Account', style: TextStyle (color: Colors.red)),
+                  onPressed: () => DialogManager.deleteWarningPopup(
+                      SLTexts.deleteAccount,
+                      SLTexts.deleteAccountMessage,
+                          () async => controller.deleteUserAccount()
+                  ),
+                  child: const Text(SLTexts.closeAccount, style: TextStyle (color: Colors.red)),
                 ),
               ),
             ],
