@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:genz_store/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -60,10 +59,27 @@ class AuthenticationRepository extends GetxController {
   /* ------------------------- Email & Password sign-in ----------------------*/
 
   /// [EmailAuthentication] - SignIn
+  Future<UserCredential> loginWithEmailAndPassword(String email, String password,) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      throw SLFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw SLFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const SLFormatException();
+    } on PlatformException catch (e) {
+      throw SLPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
   /// [EmailAuthentication] - REGISTER
-  Future<UserCredential> registerWithEmailAndPassword(String email,
-      String password,) async {
+  Future<UserCredential> registerWithEmailAndPassword(String email, String password,) async {
     try {
       return await _auth.createUserWithEmailAndPassword(
         email: email,
@@ -83,25 +99,6 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [ReAuthenticate] ReAuthenticate User
-  Future<UserCredential> loginWithEmailAndPassword(String email,
-      String password,) async {
-    try {
-      return await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-    } on FirebaseAuthException catch (e) {
-      throw SLFirebaseAuthException(e.code).message;
-    } on FirebaseException catch (e) {
-      throw SLFirebaseException(e.code).message;
-    } on FormatException catch (_) {
-      throw const SLFormatException();
-    } on PlatformException catch (e) {
-      throw SLPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
-    }
-  }
 
   /// [EmailVerification] MAIL VERIFICATION
   Future<void> sendEmailVerification() async {
@@ -121,6 +118,21 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [EmailAuthentication] FORGET PASSWORD
+  Future<void> sendPasswordResetEmail(String email) async {
+    try{
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw SLFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw SLFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const SLFormatException();
+    } on PlatformException catch (e) {
+      throw SLPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
   /* ------------------- Federated identity & social sign-in -----------------*/
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:genz_store/features/authentication/screens/password_configuration/password_configuration.dart';
 import 'package:genz_store/features/authentication/screens/signup/signup.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';
@@ -8,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../controllers/login/login_controller.dart';
+import '../../password_configuration/forget_password.dart';
 
 class SLLoginForm extends StatelessWidget {
   const SLLoginForm({super.key});
