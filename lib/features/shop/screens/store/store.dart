@@ -6,6 +6,7 @@ import 'package:genz_store/common/widgets/custom_shapes/containers/search_contai
 import 'package:genz_store/common/widgets/layouts/grid_layout.dart';
 import 'package:genz_store/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:genz_store/common/widgets/texts/section_heading.dart';
+import 'package:genz_store/features/shop/controllers/Category_controller.dart';
 import 'package:genz_store/features/shop/screens/brand/all_brands.dart';
 import 'package:genz_store/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:genz_store/utils/constants/colors.dart';
@@ -19,17 +20,10 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = SLHelperFunctions.isDarkMode(context);
-
-    final tabs = [
-      Tab(child: Text('Sports')),
-      Tab(child: Text('Furniture')),
-      Tab(child: Text('Electronics')),
-      Tab(child: Text('Clothes')),
-      Tab(child: Text('Cosmetics')),
-    ];
+    final categoriesController = CategoryController.instance.featuredCategories;
 
     return DefaultTabController(
-      length: tabs.length,
+      length: categoriesController.length,
       child: Scaffold(
         backgroundColor: dark ? SLColors.black : SLColors.white,
         appBar: SLAppBar(
@@ -84,20 +78,14 @@ class StoreScreen extends StatelessWidget {
                 ),
 
                 // TabBar
-                bottom: SLTabBar(tabs: tabs),
+                bottom: SLTabBar(tabs: categoriesController.map((category) => Tab(text: category.name)).toList()),
               ),
             ];
           },
 
           /// -- Body of Tab Bar
           body: TabBarView(
-              children: [
-                SLCategoryTab(),
-                SLCategoryTab(),
-                SLCategoryTab(),
-                SLCategoryTab(),
-                SLCategoryTab(),
-              ]
+              children: categoriesController.map((category) => SLCategoryTab(category: category)).toList()
           ),
         ),
       ),

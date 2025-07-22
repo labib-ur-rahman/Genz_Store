@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/manager/dialog_manager.dart';
-import '../../../../utils/shimmer/shimmer.dart';
+import '../../../../common/widgets/shimmers/shimmer.dart';
 import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {

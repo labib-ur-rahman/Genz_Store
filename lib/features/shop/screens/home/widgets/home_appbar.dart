@@ -4,7 +4,7 @@ import 'package:genz_store/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:genz_store/features/personalization/controllers/user_controller.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';
-import 'package:genz_store/utils/shimmer/shimmer.dart';
+import 'package:genz_store/common/widgets/shimmers/shimmer.dart';
 import 'package:get/get.dart';
 
 class SLHomeAppBar extends StatelessWidget {

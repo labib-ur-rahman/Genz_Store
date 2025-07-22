@@ -7,7 +7,7 @@ import 'package:genz_store/utils/constants/image_strings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../utils/shimmer/shimmer.dart';
+import '../shimmers/shimmer.dart';
 
 class SLUserProfileTile extends StatelessWidget {
   const SLUserProfileTile({super.key});

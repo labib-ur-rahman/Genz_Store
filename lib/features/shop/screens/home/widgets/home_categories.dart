@@ -4,27 +4,39 @@ import 'package:genz_store/features/shop/screens/sub_category/sub_categories.dar
 import 'package:genz_store/utils/constants/image_strings.dart';
 import 'package:get/get.dart';
 
+import '../../../../../common/widgets/shimmers/category_shimmer.dart';
+import '../../../controllers/Category_controller.dart';
+
 class SLHomeCategories extends StatelessWidget {
-  const SLHomeCategories({
-    super.key,
-  });
+  const SLHomeCategories({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 80,
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: 10,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (_, index) {
-          return SLVerticalImageText(
-            image: SLImages.slDiamondIcon,
-            title: 'Diamond',
-            onTap: () => Get.to(() => const SubCategoriesScreen()),
-          );
-        },
-      ),
-    );
+    final categoryController = Get.put(CategoryController());
+
+    return Obx(() {
+      if(categoryController.isLoading.value) return const SLCategoryShimmer();
+
+      if(categoryController.featuredCategories.isEmpty){
+        return Center (child: Text('No Data Found!', style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white)));
+      }
+
+      return SizedBox(
+        height: 80,
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: categoryController.featuredCategories.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (_, index) {
+            final category = categoryController.featuredCategories[index];
+            return SLVerticalImageText(
+              image: category.image,
+              title: category.name,
+              onTap: () => Get.to(() => const SubCategoriesScreen()),
+            );
+          },
+        ),
+      );
+    });
   }
 }

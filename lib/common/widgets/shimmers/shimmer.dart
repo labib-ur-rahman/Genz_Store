@@ -1,8 +1,8 @@
 import 'package:shimmer/shimmer.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/colors.dart';
-import '../helpers/helper_functions.dart';
+import '../../../utils/constants/colors.dart';
+import '../../../utils/helpers/helper_functions.dart';
 
 class SLShimmerEffect extends StatelessWidget {
   const SLShimmerEffect({

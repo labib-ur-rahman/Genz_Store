@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genz_store/common/widgets/images/sl_circular_image.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/helpers/helper_functions.dart';
@@ -10,12 +11,14 @@ class SLVerticalImageText extends StatelessWidget {
     required this.title,
     this.textColor = SLColors.white,
     this.backgroundColor,
+    this.isNetworkImage = true,
     this.onTap,
   });
 
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
+  final bool isNetworkImage;
   final void Function()? onTap;
 
   @override
@@ -25,27 +28,35 @@ class SLVerticalImageText extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        //padding: const EdgeInsets.only(right: SLSizes.spaceBtwItems),
         padding: const EdgeInsets.only(right: SLSizes.spaceBtwItems),
         child: Column(
           children: [
             /// Circular Icon
-            Container(
-              width: 56,
-              height: 56,
-              padding: const EdgeInsets.all(SLSizes.sm),
-              decoration: BoxDecoration(
-                color: backgroundColor ?? (dark ? SLColors.black : SLColors.white),
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Center(
-                child: Image(
-                  image: AssetImage(image),
-                  fit: BoxFit.cover,
-                  color: dark ? SLColors.light : SLColors.dark,
-                ),
-              ),
+            SLCircularImage(
+              image: image,
+              fit: BoxFit.fitWidth,
+              padding: SLSizes.sm * 1.4,
+              isNetworkImage: isNetworkImage,
+              backgroundColor: backgroundColor,
+              overlayColor: dark ? SLColors.light: SLColors.dark,
             ),
+
+            // Container(
+            //   width: 56,
+            //   height: 56,
+            //   padding: const EdgeInsets.all(SLSizes.sm),
+            //   decoration: BoxDecoration(
+            //     color: backgroundColor ?? (dark ? SLColors.black : SLColors.white),
+            //     borderRadius: BorderRadius.circular(100),
+            //   ),
+            //   child: Center(
+            //     child: Image(
+            //       image: AssetImage(image),
+            //       fit: BoxFit.cover,
+            //       color: dark ? SLColors.light : SLColors.dark,
+            //     ),
+            //   ),
+            // ),
 
             const SizedBox(height: SLSizes.spaceBtwItems / 2),
 
