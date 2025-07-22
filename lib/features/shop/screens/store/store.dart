@@ -6,7 +6,7 @@ import 'package:genz_store/common/widgets/custom_shapes/containers/search_contai
 import 'package:genz_store/common/widgets/layouts/grid_layout.dart';
 import 'package:genz_store/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:genz_store/common/widgets/texts/section_heading.dart';
-import 'package:genz_store/features/shop/controllers/Category_controller.dart';
+import 'package:genz_store/features/shop/controllers/category_controller.dart';
 import 'package:genz_store/features/shop/screens/brand/all_brands.dart';
 import 'package:genz_store/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:genz_store/utils/constants/colors.dart';

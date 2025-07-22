@@ -5,7 +5,7 @@ import 'package:genz_store/utils/constants/image_strings.dart';
 import 'package:get/get.dart';
 
 import '../../../../../common/widgets/shimmers/category_shimmer.dart';
-import '../../../controllers/Category_controller.dart';
+import '../../../controllers/category_controller.dart';
 
 class SLHomeCategories extends StatelessWidget {
   const SLHomeCategories({super.key});
