@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/helpers/helper_functions.dart';
+import 'package:genz_store/utils/shimmer/shimmer.dart';
 
 class SLCircularImage extends StatelessWidget {
 
@@ -38,14 +40,18 @@ class SLCircularImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
       ),
 
-      // BoxDecoration
-      child: Center(
-        child: ClipOval(
-          child: Image(
-            width: width,
-            height: height,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Center(
+          child: isNetworkImage ? CachedNetworkImage(
             fit: fit,
-            image: isNetworkImage ? NetworkImage(image) : AssetImage(image) as ImageProvider,
+            color: overlayColor,
+            imageUrl: image,
+            progressIndicatorBuilder: (context, url, downloadProgress) => const SLShimmerEffect(width: 55, height: 55, radius: 55),
+            errorWidget: (context, url, error) => const Icon (Icons.error),
+          ) : Image(
+            fit: fit,
+            image: AssetImage(image),
             color: overlayColor,
           ),
         ),

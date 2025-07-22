@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../common/widgets/loaders/loaders.dart';
 import '../../../data/repositories/authentication/authentication_repository.dart';
@@ -17,11 +18,10 @@ class UserController extends GetxController {
   static UserController get instance => Get.find();
 
   final profileLoader = false.obs;
-  Rx<UserModel> user = UserModel
-      .empty()
-      .obs;
+  Rx<UserModel> user = UserModel.empty().obs;
 
   final hidePassword = true.obs;
+  final imageUploading = false.obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final userRepository = Get.put(UserRepository());
@@ -49,34 +49,42 @@ class UserController extends GetxController {
   /// Save user Record from any Registration provider
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        final user = userCredentials.user!;
+      /// First Update Rx User and then check if user data is already stored. If not store new data
+      await fetchUserRecord();
 
-        /// Convert Name to First and Last Name
-        final nameParts = UserModel.nameParts(user.displayName ?? '');
-        final username = UserModel.generateUsername(
-          user.displayName ?? 'sl_${user.uid.substring(0, 6)}',
-        );
+      /// If no record already stored.
+      if (user.value.id.isEmpty) {
+        if (userCredentials != null) {
+          final user = userCredentials.user!;
 
-        /// Map Data
-        final userModel = UserModel(
-          id: user.uid,
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-          username: username,
-          email: user.email ?? '',
-          phoneNumber: user.phoneNumber ?? '',
-          profilePicture: user.photoURL ?? '',
-        );
+          /// Convert Name to First and Last Name
+          final nameParts = UserModel.nameParts(user.displayName ?? '');
+          final username = UserModel.generateUsername(
+            user.displayName ?? 'sl_${user.uid.substring(0, 6)}',
+          );
 
-        // Save user data
-        await userRepository.saveUserRecord(userModel);
+          /// Map Data
+          final userModel = UserModel(
+            id: user.uid,
+            firstName: nameParts[0],
+            lastName: nameParts.length > 1
+                ? nameParts.sublist(1).join(' ')
+                : '',
+            username: username,
+            email: user.email ?? '',
+            phoneNumber: user.phoneNumber ?? '',
+            profilePicture: user.photoURL ?? '',
+          );
+
+          /// Save user data
+          await userRepository.saveUserRecord(userModel);
+        }
       }
     } catch (e) {
       SLLoaders.warningSnackBar(
         title: 'Data not saved',
         message:
-        'Something went wrong while saving your information. You can re-save your data in your Profile.',
+            'Something went wrong while saving your information. You can re-save your data in your Profile.',
       );
     }
   }
@@ -111,12 +119,13 @@ class UserController extends GetxController {
   void deleteUserAccount() async {
     try {
       SLFullScreenLoader.openLoadingDialog(
-        'Processing', SLImages.docerAnimation,);
+        'Processing',
+        SLImages.docerAnimation,
+      );
 
       /// First re-authenticate user
       final auth = AuthenticationRepository.instance;
-      final provider = auth.authUser!
-          .providerData
+      final provider = auth.authUser!.providerData
           .map((e) => e.providerId)
           .first;
 
@@ -141,7 +150,10 @@ class UserController extends GetxController {
   ///RE-AUTHENTICATE before deleting
   Future<void> reAuthenticateEmailAndPasswordUser() async {
     try {
-      SLFullScreenLoader.openLoadingDialog('Processing', SLImages.docerAnimation);
+      SLFullScreenLoader.openLoadingDialog(
+        'Processing',
+        SLImages.docerAnimation,
+      );
 
       //Check Internet
       final isConnected = await NetworkManager.instance.isConnected();
@@ -155,7 +167,11 @@ class UserController extends GetxController {
         return;
       }
 
-      await AuthenticationRepository.instance.reAuthenticateWithEmailAndPassword(verifyEmail.text.trim(), verifyPassword.text.trim());
+      await AuthenticationRepository.instance
+          .reAuthenticateWithEmailAndPassword(
+            verifyEmail.text.trim(),
+            verifyPassword.text.trim(),
+          );
       await AuthenticationRepository.instance.deleteAccount();
       SLFullScreenLoader.stopLoading();
 
@@ -163,6 +179,32 @@ class UserController extends GetxController {
     } catch (e) {
       SLFullScreenLoader.stopLoading();
       SLLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  /// Upload Profile Image
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 80, maxHeight: 512, maxWidth: 512,);
+      if (image != null) {
+        imageUploading.value = true;
+
+        // Upload Image
+        final imageUrl = await userRepository.uploadImage('Users/Images/Profile/', image,);
+
+        // Update User Image Record
+        Map<String, dynamic> json = {'ProfilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+
+        SLLoaders.successSnackBar(title: 'Congratulations', message: 'Your Profile Image has been updated!');
+      }
+    } catch (e) {
+      SLLoaders.errorSnackBar(title: 'OhSnap', message: 'Something went wrong: $e',);
+    } finally {
+      imageUploading.value = false;
     }
   }
 }

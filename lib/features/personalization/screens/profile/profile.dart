@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/manager/dialog_manager.dart';
+import '../../../../utils/shimmer/shimmer.dart';
 import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -36,8 +37,14 @@ class ProfileScreen extends StatelessWidget {
 
                 child: Column(
                   children: [
-                    const SLCircularImage(image: SLImages.user, width: 80, height: 80,),
-                    TextButton(onPressed: () {}, child: const Text(SLTexts.changeProfilePic)),
+                    Obx((){
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty ? networkImage : SLImages.user;
+                      return controller.imageUploading.value
+                          ? const SLShimmerEffect(width: 80, height: 80, radius: 80)
+                          : SLCircularImage(image: image, width: 80, height: 80, isNetworkImage: networkImage.isNotEmpty);
+                    }),
+                    TextButton(onPressed: () => controller.uploadUserProfilePicture(), child: const Text(SLTexts.changeProfilePic)),
                   ],
                 ),
               ),

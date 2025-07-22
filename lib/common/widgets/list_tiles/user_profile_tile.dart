@@ -17,7 +17,12 @@ class SLUserProfileTile extends StatelessWidget {
     final controller = UserController.instance;
 
     return ListTile(
-      leading: const SLCircularImage(image: SLImages.user, width: 50, height: 50, padding: 0),
+      leading: Obx((){
+        final networkImage = controller.user.value.profilePicture;
+        final image = networkImage.isNotEmpty ? networkImage : SLImages.user;
+        return SLCircularImage(image: image, width: 50, height: 50, padding: 0, isNetworkImage: networkImage.isNotEmpty);
+      }),
+      //leading: const SLCircularImage(image: SLImages.user, width: 50, height: 50, padding: 0),
       title: Obx(() {
         if (controller.profileLoader.value) {
           return const SLShimmerEffect(width: 150, height: 15);
