@@ -2,13 +2,11 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:genz_store/bindings/general_bindings.dart';
-import 'package:genz_store/features/authentication/screens/onBoarding/onboarding.dart';
 import 'package:genz_store/routes/app_routes.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:get/get.dart';
 import 'package:genz_store/utils/theme/theme.dart';
 
-import 'package:genz_store/navigation_menu.dart';
 
 
 /// -- Use this Class to setup themes, initial Bindings, any animations and much more using Material Widget.

@@ -4,6 +4,8 @@ import 'package:genz_store/common/widgets/images/sl_circular_image.dart';
 import 'package:genz_store/common/widgets/texts/product_price_text.dart';
 import 'package:genz_store/common/widgets/texts/product_title_text.dart';
 import 'package:genz_store/common/widgets/texts/sl_brand_title_text_with_verified_icon.dart';
+import 'package:genz_store/features/shop/controllers/product/product_controller.dart';
+import 'package:genz_store/features/shop/models/product_model.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/constants/enums.dart';
 import 'package:genz_store/utils/constants/image_strings.dart';
@@ -11,10 +13,14 @@ import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/helpers/helper_functions.dart';
 
 class SLProductMetaData extends StatelessWidget {
-  const SLProductMetaData({super.key});
+  const SLProductMetaData({super.key, required this.products});
+
+  final ProductModel products;
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(products.price, products.salePrice);
     final darkMode = SLHelperFunctions.isDarkMode(context);
 
     return Column(
@@ -32,7 +38,7 @@ class SLProductMetaData extends StatelessWidget {
                 vertical: SLSizes.xs,
               ),
               child: Text(
-                '25%',
+                '$salePercentage%',
                 style: Theme.of(
                   context,
                 ).textTheme.labelLarge!.apply(color: SLColors.black),
@@ -42,21 +48,17 @@ class SLProductMetaData extends StatelessWidget {
             const SizedBox(width: SLSizes.spaceBtwItems),
 
             /// Price
-            Text(
-              '\$250',
-              style: Theme.of(context).textTheme.titleSmall!.apply(
-                decoration: TextDecoration.lineThrough,
-              ),
-            ),
-            const SizedBox(width: SLSizes.spaceBtwItems),
-            const SLProductPriceText(price: '175', isLarge: true),
+            if(products.productType == ProductType.single.toString() && products.salePrice > 0)
+              Text('\$${products.price}', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
+            if(products.productType == ProductType.single.toString() && products.salePrice > 0) const SizedBox(width: SLSizes.spaceBtwItems),
+            SLProductPriceText(price: controller.getProductPrice(products), isLarge: true),
           ],
         ),
 
         const SizedBox(height: SLSizes.spaceBtwItems / 1.5),
 
         /// Title
-        const SLProductTitleText(title: 'Green Nike Sports Shirt'),
+        SLProductTitleText(title: products.title),
         const SizedBox(height: SLSizes.spaceBtwItems / 1.5),
 
         /// Stock Status
@@ -64,7 +66,7 @@ class SLProductMetaData extends StatelessWidget {
           children: [
             const SLProductTitleText(title: 'Status'),
             const SizedBox(width: SLSizes.spaceBtwItems),
-            Text('In Stock', style: Theme.of(context).textTheme.titleMedium),
+            Text(controller.getProductStockStatus(products.stock), style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
 
@@ -74,12 +76,14 @@ class SLProductMetaData extends StatelessWidget {
         Row(
           children: [
             SLCircularImage(
-              image: SLImages.slDiamondIcon,
-              width: 32,
-              height: 32,
+              image: products.brand !=null ? products.brand!.image : '',
+              width: 38,
+              height: 38,
+              isNetworkImage: true,
+              backgroundColor: darkMode ? Colors.black : SLColors.white,
               overlayColor: darkMode ? SLColors.white : SLColors.black,
             ),
-            const SLBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.medium,),
+            SLBrandTitleWithVerifiedIcon(title: products.brand !=null ? products.brand!.name : '', brandTextSize: TextSizes.medium,),
           ],
         ),
       ],

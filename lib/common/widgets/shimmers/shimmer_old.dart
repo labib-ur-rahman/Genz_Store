@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/helpers/helper_functions.dart';
 
-class SLShimmerEffect extends StatelessWidget {
-  const SLShimmerEffect({
+class SLShimmerEffectX extends StatelessWidget {
+  const SLShimmerEffectX({
     super.key,
     required this.width,
     required this.height,

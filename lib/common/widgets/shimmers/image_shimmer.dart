@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/helpers/helper_functions.dart';
 
-class SLShimmerEffect extends StatelessWidget {
-  const SLShimmerEffect({
+class SLImageShimmerEffect extends StatelessWidget {
+  const SLImageShimmerEffect({
     super.key,
-    required this.width,
-    required this.height,
+    this.width,
+    this.height,
     this.radius = 15,
     this.color,
   });
 
-  final double width, height, radius;
+  final double? width, height, radius;
   final Color? color;
 
   @override
@@ -23,7 +23,7 @@ class SLShimmerEffect extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         color: color ?? (dark ? SLColors.darkerGrey : Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(radius),
+        borderRadius: BorderRadius.circular(radius ?? 0),
       ),
     );
   }

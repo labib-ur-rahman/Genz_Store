@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:genz_store/common/widgets/success_screen/success_screen.dart';
 import 'package:genz_store/utils/constants/image_strings.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';
@@ -10,7 +9,6 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../controllers/signup/verify_email_controller.dart';
-import '../login/login.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key, this.email});

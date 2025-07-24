@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genz_store/common/widgets/layouts/grid_layout.dart';
 import 'package:genz_store/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:genz_store/features/shop/models/product_model.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -24,7 +25,7 @@ class SLSortableProducts extends StatelessWidget {
         const SizedBox(height: SLSizes.spaceBtwSections),
 
         /// Products
-        SLGridLayout(itemCount: 8, itemBuilder: (_, index) => const SLProductCardVertical(),),
+        SLGridLayout(itemCount: 8, itemBuilder: (_, index) => SLProductCardVertical(product: ProductModel.empty())),
       ],
     );
   }

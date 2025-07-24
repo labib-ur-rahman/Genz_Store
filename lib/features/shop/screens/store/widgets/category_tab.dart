@@ -7,6 +7,8 @@ import 'package:genz_store/features/shop/models/category_model.dart';
 import 'package:genz_store/utils/constants/image_strings.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 
+import '../../../models/product_model.dart';
+
 class SLCategoryTab extends StatelessWidget {
   const SLCategoryTab({super.key, required this.category});
 
@@ -37,7 +39,7 @@ class SLCategoryTab extends StatelessWidget {
               SLSectionHeading(title: 'You might like', onPressed: () {}),
               const SizedBox(height: SLSizes.spaceBtwItems),
 
-              SLGridLayout(itemCount: 10, itemBuilder: (_, index) => const SLProductCardVertical(),),
+              SLGridLayout(itemCount: 10, itemBuilder: (_, index) => SLProductCardVertical(product: ProductModel.empty())),
 
               const SizedBox(height: SLSizes.spaceBtwSections),
             ],

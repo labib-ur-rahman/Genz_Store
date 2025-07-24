@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:genz_store/common/widgets/custom_shapes/containers/circular_container.dart';
 import 'package:genz_store/common/widgets/images/sl_rounded_images.dart';
 import 'package:genz_store/features/shop/controllers/banner_controller.dart';
-import 'package:genz_store/features/shop/controllers/home_controller.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -36,7 +35,7 @@ class SLPromoSlider extends StatelessWidget {
                 initialPage: 0,
                 enableInfiniteScroll: true,
                 reverse: false,
-                autoPlay: true,
+                autoPlay: false,
                 autoPlayInterval: Duration(seconds: 5),
                 autoPlayAnimationDuration: Duration(milliseconds: 800),
                 autoPlayCurve: Curves.fastOutSlowIn,

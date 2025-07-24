@@ -9,16 +9,20 @@ import 'package:genz_store/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:genz_store/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:genz_store/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:genz_store/utils/constants/colors.dart';
-import 'package:genz_store/utils/constants/image_strings.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
+
+import '../../../../common/widgets/shimmers/vertical_product_shimmer.dart';
+import '../../controllers/product/product_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -86,7 +90,16 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: SLSizes.spaceBtwItems),
 
                   /// -- Popular Products --------------------------------------
-                  SLGridLayout(itemCount: 10, itemBuilder: (_, index) => const SLProductCardVertical(),)
+                  Obx(() {
+                    if (controller.isLoading.value) return const SLVerticalProductShimmer();
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center (child: Text('No Data Found!', style: Theme.of(context).textTheme.bodyMedium));
+                    }
+                    return SLGridLayout(
+                      itemCount: controller.featuredProducts.length,
+                      itemBuilder: (_, index) => SLProductCardVertical (product: controller.featuredProducts[index]),
+                    );
+                  })
                 ]
               ),
             ),

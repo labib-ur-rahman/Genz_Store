@@ -1,6 +1,7 @@
 class SLSizes {
   /// -- Padding and margin sizes
   static const double na = 0.0;
+  static const double zero = 0.0;
   static const double xs = 4.0;
   static const double sm = 8.0;
   static const double md = 16.0;

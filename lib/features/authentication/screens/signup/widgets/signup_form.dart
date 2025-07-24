@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:genz_store/features/authentication/screens/signup/verify_email.dart';
 import 'package:genz_store/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/constants/text_strings.dart';

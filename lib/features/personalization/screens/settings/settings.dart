@@ -12,8 +12,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
-import '../../../../utils/constants/image_strings.dart';
-import '../../../../utils/popups/full_screen_loader.dart';
+import '../../../../dummy.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -117,9 +116,10 @@ class SettingsScreen extends StatelessWidget {
 
                   const SizedBox(height: SLSizes.spaceBtwItems),
 
-                  const SLSettingsMenuTile(
+                  SLSettingsMenuTile(
                     icon: Iconsax.document_upload,
                     title: 'Load Data',
+                    onTap: () => Get.to(() => const DummyScreen()),
                     subTitle: 'Upload Data to your Cloud Firebase',
                   ),
 

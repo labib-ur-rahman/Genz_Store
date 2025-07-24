@@ -6,13 +6,18 @@ import 'package:genz_store/features/shop/screens/product_details/widgets/product
 import 'package:genz_store/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:genz_store/features/shop/screens/product_details/widgets/rating_share_widgets.dart';
 import 'package:genz_store/features/shop/screens/product_reviews/product_reviews.dart';
+import 'package:genz_store/utils/constants/enums.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
+import '../../models/product_model.dart';
+
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class ProductDetailsScreen extends StatelessWidget {
         child: Column(
           children: [
             /// 1 - Product Image Slider
-            SLProductImageSlider(),
+            SLProductImageSlider(products: product),
 
             /// 2 - Product Details
             Padding(
@@ -37,12 +42,12 @@ class ProductDetailsScreen extends StatelessWidget {
                   SLRatingAndShare(),
 
                   ///- Price, Title, Stock, & Brand
-                  SLProductMetaData(),
+                  SLProductMetaData(products: product),
                   const SizedBox(height: SLSizes.spaceBtwItems),
 
                   /// -- Attributes
-                  SLProductAttributes(),
-                  const SizedBox (height: SLSizes.spaceBtwSections),
+                  if(product.productType == ProductType.variable.toString()) SLProductAttributes(products: product),
+                  if(product.productType == ProductType.variable.toString()) const SizedBox (height: SLSizes.spaceBtwSections),
 
                   /// -- Checkout Button
                   SizedBox(width: double.infinity, child: ElevatedButton (onPressed: () {}, child: Text('Checkout'))),
@@ -51,14 +56,15 @@ class ProductDetailsScreen extends StatelessWidget {
                   /// - Description
                   const SLSectionHeading (title: 'Description', showActionButton: false),
                   const SizedBox (height: SLSizes.spaceBtwItems),
-                  const ReadMoreText(
-                    'This is a Product description for Blue Nike Sleeve less vest. There are more things that can be added but I am just practicing and nothing else.',
+                  ReadMoreText(
+                    product.description ?? '',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText:' Show more',
+                    textAlign: TextAlign.justify,
                     trimExpandedText: ' Less',
-                    moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                    lessStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    moreStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                    lessStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
                   ),
 
                   /// - Reviews

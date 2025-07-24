@@ -3,6 +3,7 @@ import 'package:genz_store/common/widgets/appbar/appbar.dart';
 import 'package:genz_store/common/widgets/icons/sl_circular_icon.dart';
 import 'package:genz_store/common/widgets/layouts/grid_layout.dart';
 import 'package:genz_store/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:genz_store/features/shop/models/product_model.dart';
 import 'package:genz_store/features/shop/screens/home/home.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -36,7 +37,7 @@ class FavouriteScreen extends StatelessWidget {
             children: [
               SLGridLayout(
                 itemCount: 8,
-                itemBuilder: (_, index) => const SLProductCardVertical(),
+                itemBuilder: (_, index) => SLProductCardVertical(product: ProductModel.empty()),
               ),
             ],
           ), // Column
