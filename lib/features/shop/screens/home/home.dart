@@ -84,7 +84,10 @@ class HomeScreen extends StatelessWidget {
                   SLSectionHeading(
                     title: SLTexts.popularProducts,
                     showActionButton: true,
-                    onPressed: () => Get.to(() => const AllProductsScreen()),
+                    onPressed: () => Get.to(() => AllProductsScreen(
+                      title: SLTexts.popularProducts,
+                      futureMethod: controller.fetchAllFeaturedProducts(),
+                    )),
                   ),
 
                   const SizedBox(height: SLSizes.spaceBtwItems),

@@ -21,7 +21,7 @@ class BrandProductsScreen extends StatelessWidget {
               /// Brand Detail
               SLBrandCard(showBorder: true),
               SizedBox(height: SLSizes.spaceBtwSections),
-              SLSortableProducts(),
+              SLSortableProducts(products: [],),
             ],
           ),
         ),

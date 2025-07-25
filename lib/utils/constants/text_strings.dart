@@ -98,4 +98,12 @@ class SLTexts {
   static const String deleteAccount = 'Delete Account';
   static const String deleteAccountMessage = 'Are you sure you want to delete your account permanently? This action is not reversible and all of your data will be removed permanently.';
 
+  /// -- Query Option Text
+  static const String qName = 'Name';
+  static const String qHigherPrice = 'Higher Price';
+  static const String qLowerPrice = 'Lower Price';
+  static const String qSale = 'Sale';
+  static const String qNewest = 'Newest';
+  static const String qPopularity = 'Popularity';
+
 }

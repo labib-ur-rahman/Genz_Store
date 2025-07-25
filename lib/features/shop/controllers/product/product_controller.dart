@@ -18,6 +18,7 @@ class ProductController extends GetxController {
     super.onInit();
   }
 
+  /// -- Fetch Limited Featured Products
   void fetchFeaturedProducts() async {
     try {
       // Show loader while loading Products
@@ -32,6 +33,18 @@ class ProductController extends GetxController {
       SLLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  /// -- Fetch All Featured Products
+  Future<List<ProductModel>> fetchAllFeaturedProducts() async {
+    try {
+      // Fetch all Products
+      final products = await productRepository.getAllFeaturedProducts();
+      return products;
+    } catch (e) {
+      SLLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return [];
     }
   }
 

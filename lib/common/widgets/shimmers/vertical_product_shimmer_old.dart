@@ -8,8 +8,8 @@ import '../../../utils/constants/colors.dart';
 import '../../styles/shadows.dart';
 import '../layouts/grid_layout.dart';
 
-class SLVerticalProductShimmerOld extends StatelessWidget {
-  const SLVerticalProductShimmerOld({super.key, this.itemCount = 4});
+class SLVerticalProductShimmerX extends StatelessWidget {
+  const SLVerticalProductShimmerX({super.key, this.itemCount = 4});
 
   final int itemCount;
 
