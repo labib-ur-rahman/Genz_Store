@@ -44,6 +44,7 @@ class SLTexts {
   static const String profileInfo = 'Profile Information';
   static const String personalInfo = 'Personal Information';
   static const String featureBrands = 'Featured Brands';
+  static const String youMightLike = 'You might like';
   static const String brand = 'Brand';
   static const String brands = 'Brands';
 

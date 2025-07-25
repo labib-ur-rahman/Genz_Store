@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 import '../../../common/widgets/loaders/loaders.dart';
 import '../../../data/repositories/categories/category_repository.dart';
+import '../../../data/repositories/product/product_repository.dart';
+import '../models/product_model.dart';
 
 class CategoryController extends GetxController {
   static CategoryController get instance => Get.find();
@@ -38,5 +40,12 @@ class CategoryController extends GetxController {
       //Remove Loader
       isLoading.value = false;
     }
+  }
+
+  /// Get Category or Sub-Category Products
+  Future<List<ProductModel>> getCategoryProducts({required String categoryId, int limit = 4}) async {
+    // Fetch limited (4) products against each subCategory;
+    final products = await ProductRepository.instance.getProductsForCategory(categoryId: categoryId, limit: limit);
+    return products;
   }
 }
