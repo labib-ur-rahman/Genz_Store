@@ -43,6 +43,9 @@ class SLTexts {
   static const String orderReview = 'Order Review';
   static const String profileInfo = 'Profile Information';
   static const String personalInfo = 'Personal Information';
+  static const String featureBrands = 'Featured Brands';
+  static const String brand = 'Brand';
+  static const String brands = 'Brands';
 
   /// -- Authentication Form Text
   static const String firstName = "First Name";
@@ -105,5 +108,8 @@ class SLTexts {
   static const String qSale = 'Sale';
   static const String qNewest = 'Newest';
   static const String qPopularity = 'Popularity';
+
+  /// -- GLOBAL TEXTS
+  static const String noDataFound = 'No Data Found!';
 
 }

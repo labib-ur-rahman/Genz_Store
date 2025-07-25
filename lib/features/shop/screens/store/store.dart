@@ -11,8 +11,13 @@ import 'package:genz_store/features/shop/screens/brand/all_brands.dart';
 import 'package:genz_store/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:genz_store/utils/constants/colors.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
+import 'package:genz_store/utils/constants/text_strings.dart';
 import 'package:genz_store/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
+
+import '../../../../common/widgets/shimmers/brands_shimmer.dart';
+import '../../controllers/brand_controller.dart';
+import '../all_products/brand_products.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -20,6 +25,7 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = SLHelperFunctions.isDarkMode(context);
+    final brandController = Get.put(BrandController());
     final categoriesController = CategoryController.instance.featuredCategories;
 
     return DefaultTabController(
@@ -55,7 +61,7 @@ class StoreScreen extends StatelessWidget {
                       /// Search bar
                       const SizedBox(height: SLSizes.spaceBtwItems),
                       const SLSearchContainer(
-                        text: 'Search in Store',
+                        text: SLTexts.searchHintText,
                         showBorder: true,
                         showBackground: false,
                         padding: EdgeInsets.zero,
@@ -64,15 +70,27 @@ class StoreScreen extends StatelessWidget {
                       const SizedBox(height: SLSizes.spaceBtwSections),
 
                       /// Featured Brands
-                      SLSectionHeading(title: 'Featured Brands', onPressed: () => Get.to(() => AllBrandsScreen())),
+                      SLSectionHeading(title: SLTexts.featureBrands, onPressed: () => Get.to(() => AllBrandsScreen())),
 
                       const SizedBox(height: SLSizes.spaceBtwItems / 1.5),
 
-                      SLGridLayout(itemCount: 4,
-                          mainAxisExtent: 80,
-                          itemBuilder: (_, index) {
-                            return SLBrandCard(showBorder: true);
-                          })
+                      Obx(() {
+                        if(brandController.isLoading.value) return const SLBrandsShimmer();
+
+                        if (brandController.featuredBrands.isEmpty) {
+                          return Center(child: Text(SLTexts.noDataFound, style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white)));
+                        }
+
+                        return SLGridLayout(
+                            itemCount: brandController.featuredBrands.length,
+                            mainAxisExtent: 80,
+                            itemBuilder: (_, index) {
+                              final brand = brandController.featuredBrands[index];
+                              return SLBrandCard(showBorder: true, brand: brand,
+                                onTap: () => Get.to(() => BrandProductsScreen(brand: brand)));
+                            });
+                      }
+                      )
                     ],
                   ),
                 ),

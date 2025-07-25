@@ -71,7 +71,7 @@ class SLProductCardVertical extends StatelessWidget {
                   ),
 
                   /// -- Sale Tag ------------------------------------------------
-                  Positioned(
+                  if(salePercentage != null) Positioned(
                     top: SLSizes.xs + 2,
                     child: SLRoundedContainer(
                       radius: SLSizes.sm,

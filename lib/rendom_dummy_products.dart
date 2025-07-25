@@ -32,8 +32,7 @@ Future<void> addRandomDummyProducts() async {
     {
       'Id': 'adidas',
       'Name': 'Adidas',
-      'Image':
-          'https://firebasestorage.googleapis.com/v0/b/softylasa-genz-store.firebasestorage.app/o/Products%2FBrands%2Fsl-adidas-100.png?alt=media&token=e2d3aad5-d569-4a84-92e0-0c19c8a92ba1',
+      'Image': 'https://i.ibb.co/99W6Qs24/sl-adidas-100.png',
       'ProductsCount': 30,
       'IsFeatured': true,
     },
@@ -51,12 +50,12 @@ Future<void> addRandomDummyProducts() async {
       'Image':
           'https://firebasestorage.googleapis.com/v0/b/softylasa-genz-store.firebasestorage.app/o/Products%2FBrands%2Fsl-puma-100.png?alt=media&token=d95e7a13-de9a-4cd9-ae85-a877aad9df7e',
       'ProductsCount': 43,
-      'IsFeatured': true,
+      'IsFeatured': false,
     },
     {
       'Id': 'apple',
       'Name': 'Apple',
-      'Image': 'https://firebasestorage.googleapis.com/v0/b/softylasa-genz-store.firebasestorage.app/o/Products%2FBrands%2Fsl-apple-100.png?alt=media&token=289ec753-fb40-4a29-840c-1d53bdef3431',
+      'Image': 'https://i.ibb.co/3mzYQs22/sl-apple-100.png',
       'ProductsCount': 15,
       'IsFeatured': true,
     },
@@ -65,20 +64,20 @@ Future<void> addRandomDummyProducts() async {
       'Name': 'Acer',
       'Image':
           'https://firebasestorage.googleapis.com/v0/b/softylasa-genz-store.firebasestorage.app/o/Products%2FBrands%2Fsl-acer-100.png?alt=media&token=c1b452ad-6f81-411c-b575-06059ac41dad',
-      'ProductsCount': 50,
-      'IsFeatured': true,
+      'ProductsCount': 51,
+      'IsFeatured': false,
     },
     {
       'Id': 'ikea',
       'Name': 'IKEA',
       'Image': 'https://firebasestorage.googleapis.com/v0/b/softylasa-genz-store.firebasestorage.app/o/Products%2FBrands%2Fsl-ikea-100.png?alt=media&token=a8f6b5a7-6c8d-42b7-bb8d-583ee0c477e1',
-      'ProductsCount': 52,
-      'IsFeatured': true,
+      'ProductsCount': 62,
+      'IsFeatured': false,
     },
     {
       'Id': 'jordan',
       'Name': 'Jordan',
-      'Image': 'https://firebasestorage.googleapis.com/v0/b/softylasa-genz-store.firebasestorage.app/o/Products%2FBrands%2Fsl-air-jordan-100.png?alt=media&token=a08e5f09-dd0f-4a80-9e00-d30525a196ce',
+      'Image': 'https://i.ibb.co/pBRxKcZy/sl-air-jordan-100.png',
       'ProductsCount': 65,
       'IsFeatured': true,
     },
@@ -86,15 +85,15 @@ Future<void> addRandomDummyProducts() async {
       'Id': 'kenwood',
       'Name': 'Kenwood',
       'Image': 'https://firebasestorage.googleapis.com/v0/b/softylasa-genz-store.firebasestorage.app/o/Products%2FBrands%2Fsl-kenwood-100.png?alt=media&token=c5fd81cf-5284-43a9-bc44-90162276eb73',
-      'ProductsCount': 51,
-      'IsFeatured': true,
+      'ProductsCount': 91,
+      'IsFeatured': false,
     },
     {
       'Id': 'samsung',
       'Name': 'Samsung',
       'Image': 'https://firebasestorage.googleapis.com/v0/b/softylasa-genz-store.firebasestorage.app/o/Products%2FBrands%2Fsl-samsung-100.png?alt=media&token=62788271-52e2-432c-8746-9fd0f5075de2',
       'ProductsCount': 89,
-      'IsFeatured': true,
+      'IsFeatured': false,
     },
   ];
 
