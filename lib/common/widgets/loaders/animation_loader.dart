@@ -22,11 +22,13 @@ class SLAnimationLoaderWidget extends StatelessWidget {
     this.showAction = false,
     this.actionText,
     this.onActionPressed,
+    this.lottieWidth = 0.8,
   });
 
   final String text;
   final String animation;
   final bool showAction;
+  final double lottieWidth;
   final String? actionText;
   final VoidCallback? onActionPressed;
 
@@ -36,7 +38,7 @@ class SLAnimationLoaderWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset(animation, width: MediaQuery.of(context).size.width * 0.8), // Display Lottie animation
+          Lottie.asset(animation, width: MediaQuery.of(context).size.width * lottieWidth), // Display Lottie animation
           const SizedBox (height: SLSizes.defaultSpace),
           Text(
             text,
