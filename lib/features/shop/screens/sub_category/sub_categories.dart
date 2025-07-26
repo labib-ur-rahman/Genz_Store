@@ -70,6 +70,7 @@ class SubCategoriesScreen extends StatelessWidget {
                             children: [
                               /// Heading
                               SLSectionHeading(
+
                                 title: subCategory.name,
                                 onPressed: () => Get.to(
                                       () => AllProductsScreen (

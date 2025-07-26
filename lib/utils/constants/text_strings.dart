@@ -71,18 +71,26 @@ class SLTexts {
   static const String resendEmail = "Resend Email";
   static const String resendEmailIn = "Resend Email in";
   static const String getStarted = 'Get Started';
+  static const String name = 'Name';
+  static const String userId = 'User ID';
+  static const String gender = 'Gender';
+  static const String dob = 'Date of Birth';
+  static const String street = 'Street';
+  static const String postalCode = 'Postal Code';
+  static const String city = 'City';
+  static const String state = 'State';
+  static const String country = 'Country';
+  static const String changeProfilePic = 'Change Profile Picture';
+  static const String changeName = 'Change Name';
+
+  /// -- Button Text
   static const String slContinue = 'Continue';
   static const String slSubmit = 'Submit';
   static const String slDone = 'Done';
   static const String delete = 'Delete';
   static const String cancel = 'Cancel';
-  static const String name = 'Name';
-  static const String userId = 'User ID';
-  static const String gender = 'Gender';
-  static const String dob = 'Date of Birth';
-  static const String changeProfilePic = 'Change Profile Picture';
-  static const String changeName = 'Change Name';
   static const String closeAccount = 'Close Account';
+  static const String save = 'Save';
 
   /// -- Authentication Heading Text
   static const String loginTitle = 'Welcome Back';
