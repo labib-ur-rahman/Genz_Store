@@ -1,6 +1,7 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:genz_store/utils/constants/sizes.dart';
 
 /// Helper functions for cloud-related operations.
 class SLCloudHelperFunctions {
@@ -45,7 +46,15 @@ class SLCloudHelperFunctions {
 
     if (!snapshot.hasData || snapshot.data == null || snapshot.data!.isEmpty) {
       if (nothingFound != null) return nothingFound;
-      return const Center(child: Text('No Data Found!'));
+      return const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('No Data Found!'),
+            SizedBox(height: SLSizes.md),
+          ],
+        ),
+      );
     }
 
     if (snapshot.hasError) {

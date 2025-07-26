@@ -118,6 +118,7 @@ class SLProductCardVertical extends StatelessWidget {
             // Todo: Add Spacer() here to keep the height of each Box same in case 1 or 2 lines Of Headings
             Spacer(),
 
+            /// Price Row
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

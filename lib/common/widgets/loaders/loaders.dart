@@ -23,10 +23,7 @@ class SLLoaders {
               color: SLHelperFunctions.isDarkMode(Get.context!) ? SLColors
                   .darkerGrey.withOpacity(0.9) : SLColors.grey.withOpacity(0.9),
             ),
-            child: Center(child: Text(message, style: Theme
-                .of(Get.context!)
-                .textTheme
-                .labelLarge)),
+            child: Center(child: Text(message, style: Theme.of(Get.context!).textTheme.labelLarge)),
           ),
         )
     );

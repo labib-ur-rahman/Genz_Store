@@ -4,25 +4,28 @@ class CategoryModel {
   String id;
   String name;
   String image;
+  String banner;
   String parentId;
   bool isFeatured;
 
   CategoryModel({
     required this.id,
     required this.name,
-    required this.image,
+    this.image = '',
+    required this.banner,
     required this.isFeatured,
     this.parentId = '',
   });
 
   /// Empty Helper Function
-  static CategoryModel empty() => CategoryModel(id: '', image: '', name: '', isFeatured: false);
+  static CategoryModel empty() => CategoryModel(id: '', image: '', banner: '', name: '', isFeatured: false);
 
   /// Convert model to Json structure so that you can store data in Firebase
   Map<String, dynamic> toJson() {
     return {
       'name': name,
       'image': image,
+      'banner': banner,
       'parentId': parentId,
       'isFeatured': isFeatured,
     };
@@ -38,6 +41,7 @@ class CategoryModel {
         id: document.id,
         name: data['name'] ?? '',
         image: data['image'] ?? '',
+        banner: data['banner'] ?? '',
         parentId: data['parentId'] ?? '',
         isFeatured: data['isFeatured'] ?? false,
       );

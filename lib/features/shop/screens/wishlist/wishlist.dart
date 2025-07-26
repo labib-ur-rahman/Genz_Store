@@ -52,6 +52,7 @@ class FavouriteScreen extends StatelessWidget {
                 final emptyWidget = SLAnimationLoaderWidget(
                   text: 'Whoops! Wishlist is Empty...',
                   animation: SLImages.emptyBoxAnimation,
+                  lottieWidth: 1,
                   showAction: true,
                   actionText: 'Let\'s add some',
                   onActionPressed: () => Get.off(() => const NavigationMenu()),
