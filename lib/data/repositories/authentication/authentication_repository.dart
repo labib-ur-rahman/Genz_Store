@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:genz_store/data/repositories/user/user_repository.dart';
+import 'package:genz_store/utils/local_storage/storage_utility.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -40,8 +41,14 @@ class AuthenticationRepository extends GetxController {
   screenRedirect() async {
     final user = _auth.currentUser;
 
+    // Check if user is authenticated
     if (user != null) {
+      // Check if email is verified
       if (user.emailVerified) {
+        // Initialize User Specific Storage
+        await SLLocalStorage.init(user.uid);
+
+        // Check user's email is verified, navigate to the main Navigation Menu
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));

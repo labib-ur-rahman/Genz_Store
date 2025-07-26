@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genz_store/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:genz_store/common/widgets/icons/sl_circular_icon.dart';
 import 'package:genz_store/common/widgets/images/sl_rounded_images.dart';
+import 'package:genz_store/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:genz_store/common/widgets/texts/product_price_text.dart';
 import 'package:genz_store/common/widgets/texts/product_title_text.dart';
 import 'package:genz_store/common/widgets/texts/sl_brand_title_text_with_verified_icon.dart';
@@ -66,14 +67,7 @@ class SLProductCardHorizontal extends StatelessWidget {
                 ),
 
                 /// -- Favourite Icon Button
-                const Positioned(
-                  top: 0,
-                  right: 0,
-                  child: SLCircularIcon(
-                    icon: Iconsax.heart5,
-                    color: Colors.red,
-                  ),
-                ),
+                const Positioned(top: 0, right: 0, child: SLFavouriteIcon(productId: '')),
               ],
             ),
           ),

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:genz_store/_DUMMY/dummy_product_category_data.dart';
-import 'package:genz_store/_DUMMY/rendom_dummy_products.dart';
 import 'package:genz_store/utils/constants/sizes.dart';
 import 'package:genz_store/utils/dummy_brand_category_data.dart';
 
-import 'firestore_dummy_data.dart';
-
+import 'dummy_product_category_data.dart';
 
 class DummyScreen extends StatelessWidget {
   const DummyScreen({super.key});

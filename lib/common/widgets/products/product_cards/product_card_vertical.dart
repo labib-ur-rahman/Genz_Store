@@ -17,6 +17,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../features/shop/controllers/product/product_controller.dart';
 import '../../../../utils/constants/enums.dart';
 import '../../images/sl_rounded_images_old.dart';
+import '../favourite_icon/favourite_icon.dart';
 
 class SLProductCardVertical extends StatelessWidget {
   const SLProductCardVertical({super.key, required this.product});
@@ -59,7 +60,6 @@ class SLProductCardVertical extends StatelessWidget {
                   //   applyImageRadius: true,
                   //   isNetworkImage: true,
                   // ),
-
                   SizedBox(
                     width: double.infinity,
                     height: 150, // Fixed height
@@ -71,32 +71,30 @@ class SLProductCardVertical extends StatelessWidget {
                   ),
 
                   /// -- Sale Tag ------------------------------------------------
-                  if(salePercentage != null) Positioned(
-                    top: SLSizes.xs + 2,
-                    child: SLRoundedContainer(
-                      radius: SLSizes.sm,
-                      backgroundColor: SLColors.secondary.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: SLSizes.sm,
-                        vertical: SLSizes.xs,
-                      ),
-                      child: Text(
-                        '$salePercentage%',
-                        style: Theme.of(
-                          context,
-                        ).textTheme.labelLarge!.apply(color: SLColors.black),
+                  if (salePercentage != null)
+                    Positioned(
+                      top: SLSizes.xs + 2,
+                      child: SLRoundedContainer(
+                        radius: SLSizes.sm,
+                        backgroundColor: SLColors.secondary.withOpacity(0.8),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: SLSizes.sm,
+                          vertical: SLSizes.xs,
+                        ),
+                        child: Text(
+                          '$salePercentage%',
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelLarge!.apply(color: SLColors.black),
+                        ),
                       ),
                     ),
-                  ),
 
                   /// -- Favourite Icon Button
-                  const Positioned(
+                  Positioned(
                     top: 0,
                     right: 0,
-                    child: SLCircularIcon(
-                      icon: Iconsax.heart5,
-                      color: Colors.red,
-                    ),
+                    child: SLFavouriteIcon(productId: product.id),
                   ),
                 ],
               ),
@@ -127,18 +125,23 @@ class SLProductCardVertical extends StatelessWidget {
                 Flexible(
                   child: Column(
                     children: [
-                      if (product.productType == ProductType.single.toString() && product.salePrice > 0)
+                      if (product.productType ==
+                              ProductType.single.toString() &&
+                          product.salePrice > 0)
                         Padding(
                           padding: const EdgeInsets.only(left: SLSizes.zero),
-                          child: Text('\$$price',
-                            style: Theme.of(context).textTheme.labelMedium!.apply(decoration: TextDecoration.lineThrough),
+                          child: Text(
+                            '\$$price',
+                            style: Theme.of(context).textTheme.labelMedium!
+                                .apply(decoration: TextDecoration.lineThrough),
                           ),
                         ),
 
                       /// Price, Show sale price as main price if sale exist.
                       Padding(
                         padding: const EdgeInsets.only(left: SLSizes.sm),
-                        child: SLProductPriceText(price: controller.getProductPrice(product),
+                        child: SLProductPriceText(
+                          price: controller.getProductPrice(product),
                         ),
                       ),
                     ],

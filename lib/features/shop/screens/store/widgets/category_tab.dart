@@ -13,6 +13,7 @@ import 'package:genz_store/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 
 import '../../../../../common/widgets/shimmers/vertical_product_shimmer.dart';
+import '../../../../../common/widgets/shimmers/vertical_product_shimmer_old.dart';
 import '../../../../../utils/helpers/cloud_helper_functions.dart';
 import '../../../models/product_model.dart';
 
@@ -45,7 +46,7 @@ class SLCategoryTab extends StatelessWidget {
                   /// Helper Function: Handle Loader, No Record, OR ERROR Message
                   final response = SLCloudHelperFunctions.checkMultiRecordState(
                     snapshot: snapshot,
-                    loader: const SLVerticalProductShimmer(),
+                    loader: const SLVerticalProductShimmerX(),
                   );
                   if (response != null) return response;
 

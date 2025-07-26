@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
-import '../../../../_DUMMY/dummy.dart';
+import '../../../../xDUMMY/dummy.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

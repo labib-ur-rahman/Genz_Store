@@ -1,15 +1,24 @@
 import 'package:get_storage/get_storage.dart';
 
 class SLLocalStorage {
-  static final SLLocalStorage _instance = SLLocalStorage._internal();
 
-  factory SLLocalStorage() {
-    return _instance;
-  }
+  late final GetStorage _storage;
+
+  // Singleton instance
+  static SLLocalStorage? _instance;
 
   SLLocalStorage._internal();
 
-  final _storage = GetStorage();
+  factory SLLocalStorage.instance() {
+    _instance ??= SLLocalStorage._internal();
+    return _instance!;
+  }
+
+  static Future<void> init(String bucketName) async {
+    await GetStorage.init(bucketName);
+    _instance = SLLocalStorage._internal();
+    _instance!._storage = GetStorage (bucketName);
+  }
 
   // Generic method to save data
   Future<void> saveData<T>(String key, T value) async {

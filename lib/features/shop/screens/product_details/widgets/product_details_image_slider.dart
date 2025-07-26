@@ -13,6 +13,7 @@ import 'package:genz_store/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
 
+import '../../../../../common/widgets/products/favourite_icon/favourite_icon.dart';
 import '../../../controllers/product/images_controller.dart';
 
 class SLProductImageSlider extends StatelessWidget {
@@ -90,9 +91,7 @@ class SLProductImageSlider extends StatelessWidget {
             /// Appbar Icons
             SLAppBar(
               showBackArrow: true,
-              actions: [
-                SLCircularIcon(icon: Iconsax.heart5, color: Colors.red),
-              ],
+              actions: [SLFavouriteIcon(productId: products.id),],
             ),
           ],
         ),

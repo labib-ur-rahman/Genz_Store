@@ -14,6 +14,7 @@ import 'package:genz_store/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 
 import '../../../../common/widgets/shimmers/vertical_product_shimmer.dart';
+import '../../../../common/widgets/shimmers/vertical_product_shimmer_old.dart';
 import '../../controllers/product/product_controller.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -94,7 +95,7 @@ class HomeScreen extends StatelessWidget {
 
                   /// -- Popular Products --------------------------------------
                   Obx(() {
-                    if (controller.isLoading.value) return const SLVerticalProductShimmer();
+                    if (controller.isLoading.value) return const SLVerticalProductShimmerX();
                     if (controller.featuredProducts.isEmpty) {
                       return Center (child: Text('No Data Found!', style: Theme.of(context).textTheme.bodyMedium));
                     }
