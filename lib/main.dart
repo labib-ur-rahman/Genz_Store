@@ -30,12 +30,12 @@ Future<void> main() async {
   // Todo: Initialize Firebase Authentication
 
   /// -- Load all the Material Design / Themes / Localizations / Bindings
-  //runApp(const App());
+  runApp(const App());
 
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => App(), // Wrap your app
-    ),
-  );
+  // runApp(
+  //   DevicePreview(
+  //     enabled: !kReleaseMode,
+  //     builder: (context) => App(), // Wrap your app
+  //   ),
+  // );
 }

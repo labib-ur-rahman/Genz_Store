@@ -80,9 +80,9 @@ class AuthenticationRepository extends GetxController {
       throw SLFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
       throw SLFirebaseException(e.code).message;
-    } on FormatException catch (_) {
+    } on FormatException catch (_) { 
       throw const SLFormatException();
-    } on PlatformException catch (e) {
+    } on PlatformException catch (e) { 
       throw SLPlatformException(e.code).message;
     } catch (e) {
       throw 'Something went wrong. Please try again';

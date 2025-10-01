@@ -101,7 +101,6 @@ Future<void> addRandomDummyProducts() async {
   final colors = ['Black', 'White', 'Red', 'Blue', 'Green'];
   final sizes = ['S', 'M', 'L', 'XL'];
   const shoeSizes = ['EU 40', 'EU 41', 'EU 42', 'EU 43'];
-  final materials = ['Cotton', 'Polyester', 'Leather', 'Silk'];
 
   for (int i = 3; i <= 60; i++) {
     final productId = i.toString().padLeft(3, '0');
